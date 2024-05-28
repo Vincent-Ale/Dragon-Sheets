@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('character_id');
+            $table->foreignId('character_id')->constrained('characters');
             $table->integer('strenght');
             $table->integer('dexterity');
             $table->integer('intelligence');

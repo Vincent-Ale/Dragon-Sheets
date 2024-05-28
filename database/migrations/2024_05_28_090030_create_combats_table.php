@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('combats', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('character_id');
+            $table->foreignId('character_id')->constrained('characters');
             $table->integer('health_point');
             $table->integer('armor_class');
             $table->integer('passive_perception');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('spell_save_dc');
             $table->integer('spell_bonus');
             $table->integer('dices_of_life');
-            $table->integer('mastery');
+            $table->integer('proficiency');
             $table->timestamps();
         });
     }
