@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('saving_throw')->default(0);
             $table->integer('base')->default(0);
             $table->integer('bonus')->default(0);
+            $table->boolean('proficiency')->nullable();
             $table->timestamps();
         });
     }
