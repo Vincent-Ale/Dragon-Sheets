@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('combats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('character_id')->constrained('characters');
-            $table->integer('health_point');
-            $table->integer('armor_class');
-            $table->integer('passive_perception');
-            $table->integer('speed');
-            $table->integer('initiative');
-            $table->integer('spell_save_dc');
-            $table->integer('spell_bonus');
-            $table->integer('dices_of_life');
-            $table->integer('proficiency');
+            $table->integer('health_point')->default(0);
+            $table->integer('armor_class')->default(0);
+            $table->integer('passive_perception')->default(0);
+            $table->integer('speed')->default(0);
+            $table->integer('initiative')->default(0);
+            $table->integer('spell_save_dc')->default(0);
+            $table->integer('spell_bonus')->default(0);
+            $table->integer('dices_of_life')->default(0);
+            $table->integer('proficiency')->default(0);
             $table->timestamps();
         });
     }

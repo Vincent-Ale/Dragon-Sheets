@@ -16,13 +16,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->string('race');
-            $table->integer('level');
+            $table->integer('level')->default(1);
             $table->string('class');
-            $table->string('subclass_one');
-            $table->string('subclass_two');
+            $table->string('subclass_one')->nullable();
+            $table->string('subclass_two')->nullable();
             $table->string('alignment');
-            $table->text('lore');
-            $table->text('notepad');
+            $table->text('lore')->nullable();
+            $table->text('notepad')->nullable();
             $table->string('image_path')->nullable();
             $table->timestamps();
         });
