@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('stats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('character_id')->constrained('characters');
-            $table->integer('strenght')->default(0);
-            $table->integer('dexterity')->default(0);
-            $table->integer('intelligence')->default(0);
-            $table->integer('constitution')->default(0);
-            $table->integer('charisma')->default(0);
-            $table->integer('wisdom')->default(0);
+            $table->string('name');
+            $table->integer('modifier')->default(0);
+            $table->integer('saving_throw')->default(0);
+            $table->integer('base')->default(0);
+            $table->integer('bonus')->default(0);
             $table->timestamps();
         });
     }
