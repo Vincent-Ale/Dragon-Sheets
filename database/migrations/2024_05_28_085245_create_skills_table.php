@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('character_id')->constrained('characters');
             $table->string('name');
-            $table->string('value');
-            $table->boolean('proficiency');
-            $table->boolean('expertise');
+            $table->integer('value')->default(0);
+            $table->boolean('proficiency')->nullable();
+            $table->boolean('expertise')->nullable();
             $table->timestamps();
         });
     }
