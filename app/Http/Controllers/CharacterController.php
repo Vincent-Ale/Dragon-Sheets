@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Character;
 
+
+
 class CharacterController extends Controller
 {
     /**
@@ -42,8 +44,11 @@ class CharacterController extends Controller
             'notepad' => 'nullable|string',
         ]);
 
+        $user_id = auth()->id();
+
         // Création du personnage
         $character = new Character();
+        $character->user_id = $user_id;
         $character->name = $request->name;
         $character->race = $request->race;
         $character->level = $request->level;
@@ -109,4 +114,48 @@ class CharacterController extends Controller
         $character->delete();
         return redirect()->route('characters.index');
     }
+
+
+
+    public function IndexSkill(Character $character)
+    {
+        return view('skills.index', compact('character'));
+    }
+
+    public function EditSkill(character $character)
+    {
+        return view('skills.edit', compact('character'));
+    }
+
+
+    public function UpdateSkill(Request $request, Character $character)
+    {
+        // Définir les règles de validation
+        $rules = [
+            'skills' => 'required|array',
+            
+        ];
+
+        // Valider les données
+        $validated = $request->validate($rules);
+
+        // Mettre à jour chaque compétence
+        foreach ($validated['skills'] as $skillId => $skillData) {
+            $skill = $character->skills()->find($skillId);
+            if ($skill) {
+                
+
+                $skill->update([
+                    'name' => $skillData['name'],
+                    'value' => $skillData['value'],
+                    'proficiency' => isset($skillData['proficiency']) ?1:0,
+                    'expertise' => isset($skillData['expertise']) ?1:0,
+                ]);
+            }
+        }
+        
+
+        return redirect()->route('characters.show', $character)->with('success', 'Skills updated successfully.');
+    }
+
 }

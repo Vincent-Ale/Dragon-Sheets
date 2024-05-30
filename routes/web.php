@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\SkillController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,3 +40,16 @@ Route::put('/characters/update/{character}', [CharacterController::class,'update
 
 Route::delete('/characters/destroy/{character}', [CharacterController::class,'destroy'])
 ->name('characters.destroy');
+
+
+
+
+
+Route::get('/characters/show/{character}/skills', [CharacterController::class, 'IndexSkill'])->name('skills.index');
+
+Route::get('/characters/edit/{character}/skills', [CharacterController::class,'EditSkill'])
+->name('skills.edit');
+
+Route::put('/characters/update/{character}/skills', [CharacterController::class,'UpdateSkill'])
+->name('skills.update');
+
