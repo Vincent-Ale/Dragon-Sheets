@@ -21,14 +21,4 @@ class Character extends Model
     {
         return $this->hasMany(Skill::class);
     }
-
-    public function stats(): HasMany
-    {
-        return $this->hasMany(Stat::class);
-    }
-
-    public function combats(): HasMany
-    {
-        return $this->hasMany(Combat::class);
-    }
 }
