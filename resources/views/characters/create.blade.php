@@ -17,8 +17,11 @@
         </h2>
 
         <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg">
-            <form action="{{ route('characters.store') }}" method="POST" class="p-6">
+            <form action="{{ route('characters.store') }}" method="POST" enctype="multipart/form-data" class="p-6">
                 @csrf
+
+                <label for="image">Upload Image:</label>
+                <input type="file" name="image" id="image">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>

@@ -42,9 +42,17 @@ class CharacterController extends Controller
             'alignment' => 'nullable|string|max:255',
             'lore' => 'nullable|string',
             'notepad' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $user_id = auth()->id();
+
+        // Gérer le téléversement de l'image
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/images');
+            $imagePath = str_replace('public', 'storage', $imagePath);
+        }
 
         // Création du personnage
         $character = new Character();
@@ -58,6 +66,7 @@ class CharacterController extends Controller
         $character->alignment = $request->alignment;
         $character->lore = $request->lore;
         $character->notepad = $request->notepad;
+        $character->image_path = $imagePath;
         $character->save();
 
         // Redirection vers la vue détaillée du personnage
