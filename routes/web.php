@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CharacterController;
-use App\Http\Controllers\SkillController;
 
 Route::get('/', function () {
     return view('welcome');
