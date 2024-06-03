@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer('spell_save_dc')->default(0);
             $table->integer('spell_bonus')->default(0);
             $table->integer('dices_of_life')->default(0);
-            $table->integer('proficiency')->default(0);
+            $table->string('spellcasting_ability');
+            $table->integer('proficiency')->default(2);
             $table->timestamps();
         });
     }

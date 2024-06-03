@@ -17,6 +17,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
+//#############################################################################################################
+//####################################   CHARACTERS   #########################################################
+//############################################################################################################# 
+
 Route::get('/characters', function () {
     return view('characters');
 });
@@ -40,21 +45,27 @@ Route::put('/characters/update/{character}', [CharacterController::class,'update
 Route::delete('/characters/destroy/{character}', [CharacterController::class,'destroy'])
 ->name('characters.destroy');
 
+//#############################################################################################################
+//####################################   CHARACTERS END  ######################################################
+//############################################################################################################# 
 
 
 
 
-Route::get('/characters/show/{character}/skills', [CharacterController::class, 'IndexSkill'])->name('skills.index');
-
-Route::get('/characters/edit/{character}/skills', [CharacterController::class,'EditSkill'])
-->name('skills.edit');
-
-Route::put('/characters/update/{character}/skills', [CharacterController::class,'UpdateSkill'])
-->name('skills.update');
 
 
+//#############################################################################################################
+//####################################   STATS   ##############################################################
+//#############################################################################################################
 
-Route::get('/characters/show/{character}/stats', [CharacterController::class, 'IndexStat'])->name('stats.index');
+Route::get('/characters/show/{character}/stats', [CharacterController::class, 'IndexStat'])
+->name('stats.index');
+
+Route::get('/characters/create/{character}/stats', [CharacterController::class,'CreateStat'])
+->name('stats.create');
+
+Route::post('/characters/store/{character}/stats', [CharacterController::class,'StoreStat'])
+->name('stats.store');
 
 Route::get('/characters/edit/{character}/stats', [CharacterController::class,'EditStat'])
 ->name('stats.edit');
@@ -62,13 +73,63 @@ Route::get('/characters/edit/{character}/stats', [CharacterController::class,'Ed
 Route::put('/characters/update/{character}/stats', [CharacterController::class,'UpdateStat'])
 ->name('stats.update');
 
+//#############################################################################################################
+//####################################   STATS END   ##########################################################
+//#############################################################################################################
 
 
 
-Route::get('/characters/show/{character}/combats', [CharacterController::class, 'IndexCombat'])->name('combats.index');
+
+
+
+//#############################################################################################################
+//########################################   SKILLS   #########################################################
+//############################################################################################################# 
+
+Route::get('/characters/show/{character}/skills', [CharacterController::class, 'IndexSkill'])
+->name('skills.index');
+
+Route::get('/characters/create/{character}/skills', [CharacterController::class,'CreateSkill'])
+->name('skills.create');
+
+Route::post('/characters/store/{character}/skills', [CharacterController::class,'StoreSkill'])
+->name('skills.store');
+
+Route::get('/characters/edit/{character}/skills', [CharacterController::class,'EditSkill'])
+->name('skills.edit');
+
+Route::put('/characters/update/{character}/skills', [CharacterController::class,'UpdateSkill'])
+->name('skills.update');
+
+//#############################################################################################################
+//########################################   SKILLS END  ######################################################
+//############################################################################################################# 
+
+
+
+
+
+
+
+//#############################################################################################################
+//########################################   COMBAT   #########################################################
+//############################################################################################################# 
+
+Route::get('/characters/show/{character}/combats', [CharacterController::class, 'IndexCombat'])
+->name('combats.index');
+
+Route::get('/characters/create/{character}/combats', [CharacterController::class,'CreateCombat'])
+->name('combats.create');
+
+Route::post('/characters/store/{character}/combats', [CharacterController::class,'StoreCombat'])
+->name('combats.store');
 
 Route::get('/characters/edit/{character}/combats', [CharacterController::class,'EditCombat'])
 ->name('combats.edit');
 
 Route::put('/characters/update/{character}/combats', [CharacterController::class,'UpdateCombat'])
 ->name('combats.update');
+
+//#############################################################################################################
+//#######################################   COMBAT END  #######################################################
+//############################################################################################################# 

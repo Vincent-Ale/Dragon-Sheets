@@ -9,9 +9,10 @@ use App\Models\Character;
 
 class CharacterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+//#############################################################################################################
+//####################################   CHARACTERS   #########################################################
+//#############################################################################################################    
     public function index()
     {
         $characters = Character::all();
@@ -67,10 +68,10 @@ class CharacterController extends Controller
         $character->lore = $request->lore;
         $character->notepad = $request->notepad;
         $character->image_path = $imagePath;
-        $character->save();
+        $character->save($validated);
 
         // Redirection vers la vue détaillée du personnage
-        return redirect()->route('characters.show', $character);
+        return redirect()->route('stats.create', $character);
     }
 
     /**
@@ -120,57 +121,72 @@ class CharacterController extends Controller
      */
     public function destroy(character $character)
     {
+        foreach ($character->stats as $stat) {
+            $stat->delete();
+        }
+        foreach ($character->skills as $skill) {
+            $skill->delete();
+        }
+        foreach ($character->combats as $combat) {
+            $combat->delete();
+        }
         $character->delete();
         return redirect()->route('characters.index');
     }
+//#############################################################################################################
+//####################################   CHARACTERS END  ######################################################
+//############################################################################################################# 
 
 
 
-    public function IndexSkill(Character $character)
-    {
-        return view('skills.index', compact('character'));
-    }
-
-    public function EditSkill(character $character)
-    {
-        return view('skills.edit', compact('character'));
-    }
 
 
-    public function UpdateSkill(Request $request, Character $character)
-    {
-        // Définir les règles de validation
-        $rules = [
-            'skills' => 'required|array',
-            
-        ];
-
-        // Valider les données
-        $validated = $request->validate($rules);
-
-        // Mettre à jour chaque compétence
-        foreach ($validated['skills'] as $skillId => $skillData) {
-            $skill = $character->skills()->find($skillId);
-            if ($skill) {
-                
-
-                $skill->update([
-                    'name' => $skillData['name'],
-                    'value' => $skillData['value'],
-                    'proficiency' => isset($skillData['proficiency']) ?1:0,
-                    'expertise' => isset($skillData['expertise']) ?1:0,
-                ]);
-            }
-        }
-        
-
-        return redirect()->route('characters.show', $character)->with('success', 'Skills updated successfully.');
-    }
-
+//#############################################################################################################
+//####################################   STATS   ##############################################################
+//#############################################################################################################
     public function IndexStat(Character $character)
     {
         return view('stats.index', compact('character'));
     }
+
+    public function createStat(Character $character)
+    {
+        $stats=[
+            ['name' => 'Constitution', 'modifier' => 0, 'saving_throw' => 0, 'base' => 0, 'bonus' => 0],
+            ['name' => 'Force', 'modifier' => 0, 'saving_throw' => 0, 'base' => 0, 'bonus' => 0],
+            ['name' => 'Dextérité', 'modifier' => 0, 'saving_throw' => 0, 'base' => 0, 'bonus' => 0],
+            ['name' => 'Intelligence', 'modifier' => 0, 'saving_throw' => 0, 'base' => 0, 'bonus' => 0],
+            ['name' => 'Charisme', 'modifier' => 0, 'saving_throw' => 0, 'base' => 0, 'bonus' => 0],
+            ['name' => 'Sagesse', 'modifier' => 0, 'saving_throw' => 0, 'base' => 0, 'bonus' => 0]
+        ];
+
+        return view('stats.create', compact('character', 'stats'));
+    }
+
+    public function StoreStat(Request $request, Character $character)
+{
+    // Définir les règles de validation
+    $rules = [
+        'stats' => 'required|array',
+    ];
+
+    // Valider les données
+    $validated = $request->validate($rules);
+
+    // Ajouter chaque nouvelle compétence
+    foreach ($validated['stats'] as $statData) {
+        $character->stats()->create([
+            'name' => $statData['name'],
+            'modifier' => $statData['modifier'],
+            'saving_throw' => $statData['saving_throw'],
+            'base' => $statData['base'],
+            'bonus' => $statData['bonus'],
+            'proficiency' => isset($statData['proficiency']) ? 1 : 0,
+        ]);
+    }
+
+    return redirect()->route('skills.create', $character);
+}
 
     public function EditStat(character $character)
     {
@@ -183,7 +199,6 @@ class CharacterController extends Controller
         // Définir les règles de validation
         $rules = [
             'stats' => 'required|array',
-            
         ];
 
         // Valider les données
@@ -209,13 +224,147 @@ class CharacterController extends Controller
 
         return redirect()->route('characters.show', $character)->with('success', 'Stats updated successfully.');
     }
+//#############################################################################################################
+//####################################   STATS END   ##########################################################
+//#############################################################################################################
 
 
 
+
+
+//#############################################################################################################
+//########################################   SKILLS   #########################################################
+//############################################################################################################# 
+    public function IndexSkill(Character $character)
+    {
+        return view('skills.index', compact('character'));
+    }
+
+    public function createSkill(Character $character)
+    {
+        $skills=[
+            ['name' => 'Acrobaties','value' => 0],
+            ['name' => 'Arcanes','value' => 0],
+            ['name' => 'Athlétisme','value' => 0],
+            ['name' => 'Discrétion','value' => 0],
+            ['name' => 'Dressage','value' => 0],
+            ['name' => 'Escamotage','value' => 0],
+            ['name' => 'Histoire','value' => 0],
+            ['name' => 'Intimidation','value' => 0],
+            ['name' => 'Investigation','value' => 0],
+            ['name' => 'Médecine','value' => 0],
+            ['name' => 'Nature','value' => 0],
+            ['name' => 'Perception','value' => 0],
+            ['name' => 'Perspicacité','value' => 0],
+            ['name' => 'Persuasion','value' => 0],
+            ['name' => 'Religion','value' => 0],
+            ['name' => 'Représentation','value' => 0],
+            ['name' => 'Survie','value' => 0],
+            ['name' => 'Tromperie','value' => 0]
+        ];
+
+        return view('skills.create', compact('character', 'skills'));
+    }
+
+    public function StoreSkill(Request $request, Character $character)
+{
+    // Définir les règles de validation
+    $rules = [
+        'skills' => 'required|array',
+    ];
+
+    // Valider les données
+    $validated = $request->validate($rules);
+
+    // Ajouter chaque nouvelle compétence
+    foreach ($validated['skills'] as $skillData) {
+        $character->skills()->create([
+            'name' => $skillData['name'],
+            'value' => $skillData['value'],
+            'proficiency' => isset($skillData['proficiency']) ? 1 : 0,
+            'expertise' => isset($skillData['expertise']) ? 1 : 0,
+        ]);
+    }
+
+    return redirect()->route('combats.create', $character);
+}
+
+    public function EditSkill(character $character)
+    {
+        return view('skills.edit', compact('character'));
+    }
+
+
+    public function UpdateSkill(Request $request, Character $character)
+    {
+        // Définir les règles de validation
+        $rules = [
+            'skills' => 'required|array',
+        ];
+
+        // Valider les données
+        $validated = $request->validate($rules);
+
+        // Mettre à jour chaque compétence
+        foreach ($validated['skills'] as $skillId => $skillData) {
+            $skill = $character->skills()->find($skillId);
+            if ($skill) {
+                
+
+                $skill->update([
+                    'name' => $skillData['name'],
+                    'value' => $skillData['value'],
+                    'proficiency' => isset($skillData['proficiency']) ?1:0,
+                    'expertise' => isset($skillData['expertise']) ?1:0,
+                ]);
+            }
+        }
+        
+
+        return redirect()->route('characters.show', $character)->with('success', 'Skills updated successfully.');
+    }
+//#############################################################################################################
+//########################################   SKILLS END  ######################################################
+//############################################################################################################# 
+
+
+
+
+
+//#############################################################################################################
+//########################################   COMBAT   #########################################################
+//############################################################################################################# 
 
     public function IndexCombat(Character $character)
     {
         return view('combats.index', compact('character'));
+    }
+
+    public function createCombat(Character $character)
+    {
+        return view('combats.create', compact('character'));
+    }
+
+    public function StoreCombat(Request $request, Character $character)
+    {
+        $rules = [
+            'health_point' => 'required|integer',
+            'armor_class' => 'required|integer',
+            'passive_perception' => 'required|integer',
+            'speed' => 'required|integer',
+            'initiative' => 'required|integer',
+            'spell_save_dc' => 'required|integer',
+            'spell_bonus' => 'required|integer',
+            'dices_of_life' => 'required|integer',
+            'spellcasting_ability' => 'required|string',
+            'proficiency' => 'required|integer',
+        ];
+
+        // Valider les données
+        $validated = $request->validate($rules);
+        $character->combats()->create($validated);
+
+        return redirect()->route('characters.show', $character)->with('success', 'Combat attributes updated successfully.');
     }
 
     public function EditCombat(character $character)
@@ -250,6 +399,7 @@ class CharacterController extends Controller
                     'spell_save_dc' => $combatData['spell_save_dc'],
                     'spell_bonus' => $combatData['spell_bonus'],
                     'dices_of_life' => $combatData['dices_of_life'],
+                    'spellcasting_ability' => $combatData['spellcasting_ability'],
                     'proficiency' => isset($combatData['proficiency']) ?1:0,
                 ]);
             }
@@ -258,5 +408,7 @@ class CharacterController extends Controller
 
         return redirect()->route('characters.show', $character)->with('success', 'Combats updated successfully.');
     }
-
 }
+//#############################################################################################################
+//#######################################   COMBAT END  #######################################################
+//############################################################################################################# 

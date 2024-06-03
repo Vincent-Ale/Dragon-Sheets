@@ -60,7 +60,22 @@
                             <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-gray-500">Dices of Life</dt>
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][dices_of_life]" value="{{ $combat->dices_of_life }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    <select name="combats[{{ $combat->id }}][dices_of_life]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                        <option value="6" {{ $combat->dices_of_life == 6 ? 'selected' : '' }}>6</option>
+                                        <option value="8" {{ $combat->dices_of_life == 8 ? 'selected' : '' }}>8</option>
+                                        <option value="10" {{ $combat->dices_of_life == 10 ? 'selected' : '' }}>10</option>
+                                        <option value="12" {{ $combat->dices_of_life == 12 ? 'selected' : '' }}>12</option>
+                                    </select>
+                                </dd>
+                            </div>
+                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt class="text-sm font-medium text-gray-500">Dices of Life</dt>
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    <select name="combats[{{ $combat->id }}][spellcasting_ability]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                        <option value="Intelligence" {{ $combat->spellcasting_ability == 'Intelligence' ? 'selected' : '' }}>Intelligence</option>
+                                        <option value="Charisme" {{ $combat->spellcasting_ability == 'Charisme' ? 'selected' : '' }}>Charisme</option>
+                                        <option value="Sagesse" {{ $combat->spellcasting_ability == 'Sagesse' ? 'selected' : '' }}>Sagesse</option>
+                                    </select>
                                 </dd>
                             </div>
                             <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

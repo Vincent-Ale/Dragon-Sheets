@@ -10,7 +10,7 @@ class Combat extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['character_id', 'health_point', 'armor_class', 'passive_perception', 'speed', 'initiative', 'spell_save_dc', 'spell_bonus', 'dices_of_life', 'proficiency'];
+    protected $fillable = ['character_id', 'health_point', 'armor_class', 'passive_perception', 'speed', 'initiative', 'spell_save_dc', 'spell_bonus', 'dices_of_life', 'spellcasting_ability', 'proficiency'];
 
     public function character(): BelongsTo
     {
