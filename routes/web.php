@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CharacterController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (auth()->check()) {
+        return redirect('/characters');
+    } else {
+        return view('welcome');
+    }
 });
 
 Route::middleware([
