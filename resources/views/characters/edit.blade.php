@@ -1,3 +1,4 @@
+<x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         @if (session('success'))
@@ -34,7 +35,12 @@
 
                     <div>
                         <label for="level" class="block text-sm font-medium text-gray-700">Level</label>
-                        <input type="number" name="level" id="level" value="{{ $character->level }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <input type="number" name="level" id="level" oninput="CalculProfy()" value="{{ $character->level }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                    </div>
+
+                    <div>
+                        <label for="proficiency" class="block text-sm font-medium text-gray-700">Maîtrise</label>
+                        <input type="number" name="proficiency" id="proficiency" value="{{ $character->proficiency }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" readonly>
                     </div>
 
                     <div>

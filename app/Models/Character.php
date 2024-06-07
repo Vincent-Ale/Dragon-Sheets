@@ -10,9 +10,7 @@ class Character extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id', 'name', 'race', 'level', 'class', 'subclass_one', 'subclass_two', 'alignment', 'lore', 'notepad', 'image_path'
-    ];
+    protected $fillable = ['user_id', 'name', 'race', 'level', 'proficiency', 'class', 'subclass_one', 'subclass_two', 'alignment', 'lore', 'notepad', 'image_path', 'is_created' ];
 
     /**
      * Get the skills for the character.
@@ -30,5 +28,10 @@ class Character extends Model
     public function combats(): HasMany
     {
         return $this->hasMany(Combat::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -41,6 +41,31 @@ body{
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
 
+.btn-menu{
+    font-family: 'Trade Winds', display;
+    color: var(--cyan-color);
+    background-color: var(--dark-blue-color);
+    border: 4px solid var(--purple-color);
+    border-radius: 0 0 0 2rem;
+    cursor: pointer;
+}
+
+.lien-menu{
+    width: 300x;
+    height: auto;
+    font-family: 'Trade Winds', display;
+    color: var(--orange-color);
+    background-color: var(--dark-blue-color);
+    border: 4px solid var(--purple-color);
+    border-radius: 0 0 0 2rem;
+}
+
+.dragon-logo{
+    width: 50px;
+    height: 50px;
+}
+
+
 .bg-gravel{
     background-image: url('/public/images/gravel.png');
     background-color: var(--grey-color);
@@ -150,6 +175,152 @@ p{
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
 
+
+
+.modal{
+    width: 300px;
+    height: 625px;
+    background-image: url('/public/images/v3-scroll.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-family: "Vollkorn SC", serif;
+    font-weight: 400;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.color-text{
+    font-family: "Vollkorn SC", serif;
+    color: var(--dark-blue-color);
+    font-weight: 600;
+}
+
+.btn-voir{
+    font-family: "Vollkorn SC", serif;
+    color: var(--dark-blue-color);
+    background-color: var(--cyan-color);
+    border: 4px solid var(--cyan-color);
+    font-weight: 800;
+}
+
+.btn-delete{
+    font-family: "Vollkorn SC", serif;
+    color: var(--dark-blue-color);
+    background-color: var(--orange-color);
+    font-weight: 800;
+}
+
+.bdd-text{
+    font-family: "Vollkorn SC", serif;
+    font-weight: 400;
+    transform: translateY(-10px); 
+}
+
+.img-container{
+    width: 238px;
+    height: 158px;
+}
+
+.profil-img{
+    width: 180px;
+    height: 120px;
+    background-color: #8b8b8b;
+}
+
+.profil-cadre{
+    width: 238px;
+    height: 158px;
+}
+
+.char-list-bar{
+    width: 360px;
+    height: 80px;
+    background-image: url('/public/images/barpurple2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--cyan-color);
+    font-family: "Vollkorn SC", serif;
+    font-weight: 800;
+}
+
+.list-scroll{
+    max-height: 37rem;
+}
+
+.effect-top{
+    position: relative;
+    height: 50px;
+    width: 100%;
+}
+
+.effect-top::before {
+    bottom: 0;
+    background: linear-gradient(to top, #0B0B0B, #0b0b0b00);
+}
+
+.effect-top::before,
+.effect-top::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px; /* Vous pouvez ajuster cette valeur */
+    z-index: 2;
+}
+
+.effect-bottom{
+    position: relative;
+    height: 50px;
+    width: 100%;
+}
+
+.effect-bottom::before {
+    top: 0;
+    background: linear-gradient(to bottom, #0B0B0B, #0b0b0b00);
+}
+
+.effect-bottom::before,
+.effect-bottom::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px; /* Vous pouvez ajuster cette valeur */
+    z-index: 2;
+}
+
+.effect-scroll{
+    position: relative;
+    height: 37rem;
+}
+
+
+.effect-scroll::before,
+.effect-scroll::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px; /* Vous pouvez ajuster cette valeur */
+    z-index: 2;
+}
+  
+.effect-scroll::before {
+    top: 0;
+    background: linear-gradient(to bottom, #0B0B0B, #0b0b0b00);
+}
+  
+.effect-scroll::after {
+    bottom: 0;
+    background: linear-gradient(to top, #0B0B0B, #0b0b0b00);
+}
+
+.footer-create-box{
+    background-color: var(--dark-blue-color);    
+}
+
+.footer-create{
+    font-family: 'Trade Winds', display;
+}
 
 
 /* ###################################################################################################### */

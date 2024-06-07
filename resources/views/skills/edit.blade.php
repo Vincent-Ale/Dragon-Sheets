@@ -1,3 +1,5 @@
+<x-navbar />
+<x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -44,12 +46,28 @@
                 </div>
 
                 <div class="mt-4 flex space-x-2">
+                    
+                    @if ($character->is_created == true)
+
                     <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
-                        Save Skills
+                        Sauvegarder
                     </button>
-                    <a href="{{ route('characters.show', $character) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
-                        Back to Character
+
+                    @else
+
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+                        Terminer la création
+                    </button>
+
+                    @endif
+
+                    @if ($character->is_created == true)
+                    
+                    <a href="{{ route('skills.index', $character) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
+                        Annuler
                     </a>
+
+                    @endif
                 </div>
             </form>
         </div>

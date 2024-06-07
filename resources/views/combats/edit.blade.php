@@ -1,3 +1,5 @@
+<x-navbar />
+<x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -69,7 +71,7 @@
                                 </dd>
                             </div>
                             <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Dices of Life</dt>
+                                <dt class="text-sm font-medium text-gray-500">Spellcasting Ability</dt>
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     <select name="combats[{{ $combat->id }}][spellcasting_ability]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                                         <option value="Intelligence" {{ $combat->spellcasting_ability == 'Intelligence' ? 'selected' : '' }}>Intelligence</option>
@@ -77,25 +79,34 @@
                                         <option value="Sagesse" {{ $combat->spellcasting_ability == 'Sagesse' ? 'selected' : '' }}>Sagesse</option>
                                     </select>
                                 </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Proficiency</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="checkbox" name="combats[{{ $combat->id }}][proficiency]" {{ $combat->proficiency ? 'checked' : '' }} class="mt-1 block">
-                                </dd>
-                            </div>
-                            
+                            </div>                            
                         @endforeach
                     </dl>
                 </div>
 
                 <div class="mt-4 flex space-x-2">
+                    
+                    @if ($character->is_created == true)
+
                     <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
-                        Save Combats
+                        Sauvegarder
                     </button>
-                    <a href="{{ route('characters.show', $character) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
-                        Back to Character
+
+                    @else
+
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+                        Suivant
+                    </button>
+
+                    @endif
+
+                    @if ($character->is_created == true)
+                    
+                    <a href="{{ route('combats.index', $character) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
+                        Annuler
                     </a>
+
+                    @endif
                 </div>
             </form>
         </div>

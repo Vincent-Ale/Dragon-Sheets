@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('race');
             $table->integer('level')->default(1);
+            $table->integer('proficiency')->default(2);
             $table->string('class');
             $table->string('subclass_one')->nullable();
             $table->string('subclass_two')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->text('lore')->nullable();
             $table->text('notepad')->nullable();
             $table->string('image_path')->nullable();
+            $table->boolean('is_created')->default(false);
             $table->timestamps();
         });
     }
