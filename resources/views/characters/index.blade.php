@@ -94,12 +94,3 @@
 
 </x-app-layout>
 
-<!-- 
-
-
-
-<a href="{{ route('characters.show', $character) }}">
-    Voir
-</a>
-
--->
