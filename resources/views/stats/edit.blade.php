@@ -1,4 +1,3 @@
-<x-navbar />
 <x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -90,4 +89,15 @@
             </form>
         </div>
     </div>
+    @if($character && $character->is_created == 1)
+        <nav class="navbar-char h-24 flex flex-row justify-center items-center">
+            <a class="bg-blue-char rounded-tr-3xl" href="{{ route('characters.show', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/avatar-cyan.png" alt=""></a>
+
+            <a class="" href="{{ route('stats.index', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/brainorange.png" alt=""></a>
+
+            <a class="bg-blue-char rounded-tl-3xl" href="{{ route('combats.index', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/swordcyan.png" alt=""></a>
+
+            <a class="bg-blue-char" href="{{ route('skills.index', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/cyanskill.png" alt=""></a>
+        </nav>
+    @endif
 </x-app-layout>

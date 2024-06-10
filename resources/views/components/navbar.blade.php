@@ -1,9 +1,12 @@
-<nav class="flex flex-row absolute bottom-0 left-1/2 -translate-x-1/2">
+<nav class="navbar-icons flex flex-row justify-evenly pb-2 pr-2">
     @if(auth()->user() && auth()->user()->character->is_created)
-        <a class="text-xl text-black" href="{{ route('characters.show', auth()->user()->character) }}">character show</a>
-        <a class="text-xl text-black" href="{{ route('stats.index', auth()->user()->character) }}">stats</a>
-        <a class="text-xl text-black" href="{{ route('combats.index', auth()->user()->character) }}">combat</a>
-        <a class="text-xl text-black" href="{{ route('skills.index', auth()->user()->character) }}">skill</a>
+        <a class="" href="{{ route('characters.show', auth()->user()->character) }}"><img class="icons-nav" src="/images/icons/avatar-cyan.png" alt=""></a>
+
+        <a class="" href="{{ route('stats.index', auth()->user()->character) }}"><img class="icons-nav" src="/images/icons/braincyan.png" alt=""></a>
+
+        <a class="" href="{{ route('combats.index', auth()->user()->character) }}"><img class="icons-nav" src="/images/icons/cyanskill.png" alt=""></a>
+
+        <a class="" href="{{ route('skills.index', auth()->user()->character) }}"><img class="icons-nav" src="/images/icons/swordcyan.png" alt=""></a>
     @endif
 </nav>
 
