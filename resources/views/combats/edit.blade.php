@@ -112,13 +112,13 @@
     </div>
     @if($character && $character->is_created == 1)
         <nav class="navbar-char h-24 flex flex-row justify-center items-center">
-            <a class="bg-blue-char" href="{{ route('characters.show', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/avatar-cyan.png" alt=""></a>
+            <a class="bg-blue-char" href="{{ route('characters.show', $character) }}"><img class="icons-nav p-4" src="/images/icons/avatar-cyan.png" alt=""></a>
 
-            <a class="bg-blue-char rounded-tr-3xl" href="{{ route('stats.index', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/braincyan.png" alt=""></a>
+            <a class="bg-blue-char rounded-tr-3xl" href="{{ route('stats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/braincyan.png" alt=""></a>
 
-            <a class="" href="{{ route('combats.index', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/swordorange.png" alt=""></a>
+            <a class="" href="{{ route('combats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/swordorange.png" alt=""></a>
 
-            <a class="bg-blue-char rounded-tl-3xl" href="{{ route('skills.index', auth()->user()->character) }}"><img class="icons-nav p-4" src="/images/icons/cyanskill.png" alt=""></a>
+            <a class="bg-blue-char rounded-tl-3xl" href="{{ route('skills.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/cyanskill.png" alt=""></a>
         </nav>
     @endif
 </x-app-layout>

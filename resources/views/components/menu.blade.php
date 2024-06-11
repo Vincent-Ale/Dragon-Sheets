@@ -1,6 +1,6 @@
 <div x-data="{ openmenu: false }">
     
-    <div class="menu flex fixed top-0 right-0 z-10"
+    <div class="menu flex fixed top-0 right-0"
             x-show="openmenu"
             x-on:click.away="openmenu = false"
             x-cloak
