@@ -10,9 +10,9 @@
 
         
             
-            <div class="flex flex-col items-center mt-10">
+            <div class="flex flex-col items-center mt-6">
                 @foreach ($character->stats as $stat)
-                    <div class="stat-container  mb-6 p-2 rounded-md border">
+                    <div class="stat-group mb-6 p-2 rounded-md border">
                         <div class="name-stat-profi flex flex-row items-end justify-between mb-1">
                             <dd class="stat-name text-left text-2xl">{{ $stat->name }}</dd>
                             <div class="flex flex-row items-center ">
@@ -26,21 +26,21 @@
                         <div class="box-stats flex flex-row">
                             <div class="modithrow flex flex-col mr-2">
                                 <div class="flex flex-row items-center p-2">
-                                    <dd class="mx-3 text-3xl text-white">{{ $stat->modifier }}</dd>
+                                    <dd class="w-6 mx-3 text-3xl text-white text-center">{{ $stat->modifier }}</dd>
                                     <dt class="cyan-text text-l font-medium ">Modificateur</dt>
                                 </div>
                                 <div class="flex flex-row items-center px-2 py-1">
-                                    <dd class="mx-3 text-3xl text-white">{{ $stat->saving_throw }}</dd>
+                                    <dd class="w-6 mx-3 text-3xl text-white text-center">{{ $stat->saving_throw }}</dd>
                                     <dt class="cyan-text text-l font-medium ">Jets de Sauvegarde</dt>
                                 </div>
                             </div>
-                            <div class="base-bonus flex flex-col">
+                            <div class="base-bonus flex flex-col justify-center">
                                 <div class="flex flex-row items-center p-2">
-                                    <dd class="case-stat mr-1 border-2 rounded px-3 text-xl">{{ $stat->base }}</dd>
+                                    <dd class="mr-1 px-3 text-xl text-white">{{ $stat->base }}</dd>
                                     <dt class="cyan-text text-l font-medium ">Base</dt>
                                 </div>
-                                <div class="flex flex-row items-center justify-between p-2">
-                                    <dd class="case-stat mr-1 border-2 rounded px-3 text-xl">{{ $stat->bonus }}</dd>
+                                <div class="flex flex-row items-center p-2">
+                                    <dd class="mr-1 px-3 text-xl text-white">{{ $stat->bonus }}</dd>
                                     <dt class="cyan-text text-l font-medium ">Bonus</dt>
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
 <div x-data="{ openmenu: false }">
-
+    
     <div class="menu flex fixed top-0 right-0 z-20"
             x-show="openmenu"
             x-on:click.away="openmenu = false"
