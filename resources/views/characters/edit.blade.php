@@ -85,4 +85,15 @@
             </form>
         </div>
     </div>
+    @if($character && $character->is_created == 1)
+        <nav class="navbar-char h-24 flex flex-row justify-center items-center">
+            <a class="" href="{{ route('characters.show', $character) }}"><img class="icons-nav p-4" src="/images/icons/avatar-orange.png" alt=""></a>
+
+            <a class="bg-blue-char rounded-tl-3xl" href="{{ route('stats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/braincyan.png" alt=""></a>
+
+            <a class="bg-blue-char" href="{{ route('combats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/swordcyan.png" alt=""></a>
+
+            <a class="bg-blue-char" href="{{ route('skills.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/cyanskill.png" alt=""></a>
+        </nav>
+    @endif
 </x-app-layout>

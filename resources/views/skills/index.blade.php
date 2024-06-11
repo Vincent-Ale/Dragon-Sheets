@@ -1,4 +1,3 @@
-<x-navbar />
 <x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -35,12 +34,20 @@
         </div>
 
         <div class="mt-4 flex space-x-2">
-            <a href="{{ route('characters.show', $character) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
-                Back to Characters
-            </a>
             <a href="{{ route('skills.edit', $character) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
-                Edit Skills
+                Modifier
             </a>
         </div>
     </div>
+    @if($character && $character->is_created == 1)
+        <nav class="navbar-char h-24 flex flex-row justify-center items-center">
+            <a class="bg-blue-char " href="{{ route('characters.show', $character) }}"><img class="icons-nav p-4" src="/images/icons/avatar-cyan.png" alt=""></a>
+
+            <a class="bg-blue-char" href="{{ route('stats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/braincyan.png" alt=""></a>
+
+            <a class="bg-blue-char rounded-tr-3xl" href="{{ route('combats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/swordcyan.png" alt=""></a>
+
+            <a class="" href="{{ route('skills.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/orangeskill.png" alt=""></a>
+        </nav>
+    @endif
 </x-app-layout>

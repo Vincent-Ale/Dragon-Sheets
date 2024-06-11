@@ -1,6 +1,6 @@
 <div x-data="{ openmenu: false }">
     
-    <div class="menu absolute top-0 right-0 z-10"
+    <div class="menu flex fixed top-0 right-0"
             x-show="openmenu"
             x-on:click.away="openmenu = false"
             x-cloak
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="btn-menu absolute top-0 right-0 z-60 flex flex-col items-center p-1" x-on:click="openmenu = true">
+    <div class="btn-menu fixed top-0 right-0 z-60 flex flex-col items-center p-1" x-on:click="openmenu = true">
         <p class="text-xl" >MENU</p>
         <img class="dragon-logo" src="/images/dragonlogo.png" alt="">
     </div>

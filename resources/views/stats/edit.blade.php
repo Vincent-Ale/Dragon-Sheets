@@ -1,77 +1,78 @@
-<x-navbar />
 <x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Edit Stats for {{ $character->name }}
-        </h2>
+        
+    <div class="bg-gravel w-72 h-16 ml-2.5 flex items-center justify-center rounded-lg">
+        <div class="bg-blue flex w-[17rem] h-12 rounded-lg text-4xl text-center items-center justify-center pt-2 ">
+            <h1 class="titre-stats" >Caractéristiques</h1>
+        </div>
+    </div>
 
-        <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="flex flex-col items-center mt-10">
             <form action="{{ route('stats.update', $character) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <input type="hidden" id="recovery-profy" value="{{ $character->proficiency }}">
                 
-                <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">Stats</h3>
-                </div>
-                <div class="border-t border-gray-200">
-                    <dl>
-                        @foreach ($character->stats as $stat)
-                            <div class="stat-group">
-                                <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Stat Name</dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <input type="text" name="stats[{{ $stat->id }}][name]" value="{{ $stat->name }}" readonly class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                    </dd>
+                <div class="flex flex-col items-center mt-10">
+                    @foreach ($character->stats as $stat)
+
+                        <div class="stat-container  mb-6 p-2 rounded-md border">
+
+                            <div class="name-stat-profi flex flex-row items-end justify-between mb-1">
+                                <input type="text" name="stats[{{ $stat->id }}][name]" value="{{ $stat->name }}" readonly class="stat-name text-left text-2xl">
+                                <dt class="cyan-text text-xl font-medium mr-2">Maîtrise</dt>
+                                <dd class="custom-checkbox">
+                                    <input type="checkbox" class="profibox" name="stats[{{ $stat->id }}][proficiency]" {{ $stat->proficiency ? 'checked' : '' }} >
+                                </dd>
+                            </div>
+                            
+                            <div class="box-stats flex flex-row">
+                                <div class="modithrow flex flex-col justify-center mr-2">
+                                    <div class="flex flex-row items-center p-2">
+                                        <dd class="text-3xl text-white">
+                                            <input type="number" class="modifier input-hidden" name="stats[{{ $stat->id }}][modifier]" value="{{ $stat->modifier }}" readonly>
+                                        </dd>
+                                        <dt class="cyan-text text-l font-medium">Modificateur</dt>
+                                    </div>
+                                    <div class="flex flex-row items-center px-2 py-1">
+                                        <dd class="text-3xl text-white">
+                                            <input type="number" class="saving_throw input-hidden" name="stats[{{ $stat->id }}][saving_throw]" value="{{ $stat->saving_throw }}" readonly >
+                                        </dd>
+                                        <dt class="cyan-text text-l font-medium">Jets de Sauvegarde</dt>
+                                    </div>
                                 </div>
-                                <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Modifier</dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <input type="number" class="modifier" name="stats[{{ $stat->id }}][modifier]" value="{{ $stat->modifier }}" readonly class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                    </dd>
-                                </div>
-                                <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Saving Throw</dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <input type="number" class="saving_throw" name="stats[{{ $stat->id }}][saving_throw]" value="{{ $stat->saving_throw }}" readonly class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                    </dd>
-                                </div>
-                                <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Base</dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <input type="number" class="base" name="stats[{{ $stat->id }}][base]" value="{{ $stat->base }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                    </dd>
-                                </div>
-                                <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Bonus</dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <input type="number" class="bonus" name="stats[{{ $stat->id }}][bonus]" value="{{ $stat->bonus }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                    </dd>
-                                </div>
-                                <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Proficiency</dt>
-                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        <input type="checkbox" class="profibox" name="stats[{{ $stat->id }}][proficiency]" {{ $stat->proficiency ? 'checked' : '' }} class="mt-1 block">
-                                    </dd>
+                                <div class="base-bonus flex flex-col">
+                                    <div class="flex flex-row items-center p-2">
+                                        <dd class="case-stat mr-1 rounded text-xl">
+                                            <input type="number" class="base" name="stats[{{ $stat->id }}][base]" value="{{ $stat->base }}">
+                                        </dd>
+                                        <dt class="cyan-text text-l font-medium">Base</dt>
+                                    </div>
+                                    <div class="flex flex-row items-center justify-between p-2">
+                                        <dd class="case-stat mr-1 rounded text-xl">
+                                            <input type="number" class="bonus" name="stats[{{ $stat->id }}][bonus]" value="{{ $stat->bonus }}">
+                                        </dd>
+                                        <dt class="cyan-text text-l font-medium">Bonus</dt>
+                                    </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </dl>
+                        </div>
+                    @endforeach
                 </div>
 
                 <div class="mt-4 flex space-x-2">
 
                     @if ($character->is_created == true)
 
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+                    <button type="submit" class="btn-modif inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full ">
                         Sauvegarder
                     </button>
 
                     @else
 
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+                    <button type="submit" class="btn-modif inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full ">
                         Suivant
                     </button>
 
@@ -80,7 +81,7 @@
 
                     @if ($character->is_created == true)
                     
-                    <a href="{{ route('stats.index', $character) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
+                    <a href="{{ route('stats.index', $character) }}" class="inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
                         Annuler
                     </a>
 
@@ -90,4 +91,15 @@
             </form>
         </div>
     </div>
+    @if($character && $character->is_created == 1)
+        <nav class="navbar-char h-24 flex flex-row justify-center items-center">
+            <a class="bg-blue-char rounded-tr-3xl" href="{{ route('characters.show', $character) }}"><img class="icons-nav p-4" src="/images/icons/avatar-cyan.png" alt=""></a>
+
+            <a class="" href="{{ route('stats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/brainorange.png" alt=""></a>
+
+            <a class="bg-blue-char rounded-tl-3xl" href="{{ route('combats.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/swordcyan.png" alt=""></a>
+
+            <a class="bg-blue-char" href="{{ route('skills.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/cyanskill.png" alt=""></a>
+        </nav>
+    @endif
 </x-app-layout>
