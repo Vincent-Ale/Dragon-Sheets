@@ -22,11 +22,13 @@
 
                             <div class="name-stat-profi flex flex-row items-end justify-between mb-1">
                                 <input type="text" name="stats[{{ $stat->id }}][name]" value="{{ $stat->name }}" readonly class="stat-name input-no-padding text-left text-2xl">
-                                <dt class="cyan-text text-xl font-medium mr-2">Maîtrise</dt>
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" class="profibox" name="stats[{{ $stat->id }}][proficiency]" {{ $stat->proficiency ? 'checked' : '' }} >
-                                    <span class="checkmark rounded"></span>
-                                </label>
+                                <div class="flex flex-row items-center">
+                                    <dt class="cyan-text text-xl font-medium mr-2">Maîtrise</dt>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" class="profibox" name="stats[{{ $stat->id }}][proficiency]" {{ $stat->proficiency ? 'checked' : '' }} >
+                                        <span class="checkmark rounded"></span>
+                                    </label>
+                                </div>
                             </div>
                             
                             <div class="box-stats flex flex-row">

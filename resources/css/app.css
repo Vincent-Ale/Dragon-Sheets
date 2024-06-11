@@ -36,7 +36,7 @@ input.input-stat {
     outline: none;
     background: transparent;
     width: 40px;
-    height: 35px;
+    height: 32px;
     padding: 1px;
     text-align: center;
     font-size: inherit;
@@ -65,6 +65,7 @@ input.input-hidden {
     padding: 1px;
     text-align: center;
     width: 40px;
+    height: 36px;
 }
 
 /* ###################################################################################################### */
