@@ -1,7 +1,7 @@
 <x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-3 sm:px-6 lg:px-8">
-        <div class="bg-gravel w-72 h-16 ml-2.5 flex items-center justify-center rounded-lg">
+        <div class="bg-gravel w-72 h-16 mx-4 flex items-center justify-center rounded-lg">
             <div class="bg-blue flex w-[17rem] h-12 rounded-lg text-4xl text-center items-center justify-center pt-2 ">
                 <h1>Personnage</h1>
             </div>
@@ -17,52 +17,51 @@
                 </div>
                 <dl>
                     <!-- Détails du personnage -->
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Nom</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->name }}</dd>
+                    <div class=" px-4 py-2">
+                        <dt class="text-3xl txt-orange">Nom</dt>
+                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->name }}</dd>
                     </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Race</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->race }}</dd>
+                    <div class=" px-4 py-2">
+                        <dt class="text-3xl txt-orange">Race</dt>
+                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->race }}</dd>
                     </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Level</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->level }}</dd>
+                    <div class="flex flex-row">
+                        <div class="w-1/2 px-4 py-2">
+                            <dt class="text-3xl txt-orange">Level</dt>
+                            <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->level }}</dd>
+                        </div>
+                        <div class="w-1/2 px-4 py-2">
+                            <dt class="text-3xl txt-orange">Maîtrise</dt>
+                            <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->proficiency }}</dd>
+                        </div>
                     </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Maîtrise</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->proficiency }}</dd>
+                    <div class=" px-4 py-2">
+                        <dt class="text-3xl txt-orange">Class</dt>
+                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->class }}</dd>
                     </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Class</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->class }}</dd>
+                    <div class=" px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
+                        <dt class="text-3xl txt-orange">Subclass One</dt>
+                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->subclass_one }}</dd>
                     </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Subclass One</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->subclass_one }}</dd>
+                    <div class=" px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
+                        <dt class="text-3xl txt-orange">Subclass Two</dt>
+                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->subclass_two }}</dd>
                     </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Subclass Two</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->subclass_two }}</dd>
+                    <div class=" px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
+                        <dt class="text-3xl txt-orange">Alignment</dt>
+                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->alignment }}</dd>
                     </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Alignment</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->alignment }}</dd>
-                    </div>
-                    <div class=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-3xl font-medium txt-orange">Notepad</dt>
-                        <dd class="flex flex-row items-center pl-1 mt-1 text-xl text-gray-900 sm:mt-0 sm:col-span-2 border h-10 input-deco">{{ $character->notepad }}</dd>
-                    </div>
-                    <div class="flex flex-row justify-center gap-x-8">
+                    <div class="flex flex-row justify-center gap-x-4 pt-2 pb-2">
                         {{-- Lore modal section --}}
 
                         <div x-data="{ showModal: false }" x-init="$watch('showModal', value => document.body.classList.toggle('overflow-hidden', value))">
-                            <button x-on:click="showModal = true" class="w-16 h-auto inline-flex items-center px-4 py-2 bg-cyan border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
-                                <img src="/images/loreblue.png" alt="icone de plume pour afficher le lore personnage">
-                            </button>
+                            <div x-on:click="showModal = true" class="ml-4 inline-flex items-center px-2 py-2 bg-cyan border border-transparent rounded-md text-lg">
+                                <img class="lore-notepad" src="/images/loreblue.png" alt="icone de plume pour afficher le lore personnage">
+                                <p class="txt-darkBlue">Lore</p>
+                            </div>
 
                             <!-- Modal Background -->
-                            <div x-show="showModal" class="fixed inset-0 overflow-y-auto" style="display: none;">
+                            <div x-show="showModal" class="fixed inset-0 overflow-y-auto " style="display: none;">
                                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                                     <!-- Modal Overlay -->
                                     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
@@ -81,7 +80,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button x-on:click="showModal = false" type="button" class="absolute bottom-[10%] left-1/2 transform -translate-x-1/2 w-20 rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        <button x-on:click="showModal = false" type="button" class="absolute bottom-[10%] left-1/2 transform -translate-x-1/2 w-20 rounded-md border border-transparent shadow-sm px-4 py-2 txt-darkBlue bg-cyan">
                                             Close
                                         </button>
                                     </div>
@@ -90,7 +89,7 @@
                         </div>
 
                         <div>
-                            <a href="{{ route('characters.edit', $character) }}" class="w-24 h-12 inline-flex items-center px-4 py-2 bg-cyan border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+                            <a href="{{ route('characters.edit', $character) }}" class="txt-darkBlue flex justify-center w-28 h-12 items-center px-2 py-2 bg-cyan border border-transparent rounded-md">
                                 Modifier
                             </a>
                         </div>
@@ -98,9 +97,10 @@
                         {{-- Notepad modal section --}}
 
                         <div x-data="{ showModal: false }" x-init="$watch('showModal', value => document.body.classList.toggle('overflow-hidden', value))">
-                            <button x-on:click="showModal = true" class="w-16 h-auto inline-flex items-center px-4 py-2 bg-cyan border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
-                                <img src="/images/edit.png" alt="icone de plume pour afficher les notes du personnage">
-                            </button>
+                            <div x-on:click="showModal = true" class="mr-4 inline-flex items-center px-2 py-2 bg-cyan border border-transparent rounded-md">
+                                <img class="lore-notepad pr-2" src="/images/edit.png" alt="icone de plume pour afficher les notes du personnage">
+                                <p class="txt-darkBlue">Notepad</p>
+                            </div>
 
                             <!-- Modal Background -->
                             <div x-show="showModal" class="fixed inset-0 overflow-y-auto" style="display: none;">
@@ -122,7 +122,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button x-on:click="showModal = false" type="button" class="absolute bottom-[10%] left-1/2 transform -translate-x-1/2  w-20 rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        <button x-on:click="showModal = false" type="button" class="absolute bottom-[10%] left-1/2 transform -translate-x-1/2  w-20 rounded-md border border-transparent shadow-sm px-4 py-2 txt-darkBlue bg-cyan">
                                             Close
                                         </button>
                                     </div>
@@ -137,14 +137,6 @@
                     
                 </dl>
             </div>
-        </div>
-
-        <div class="mt-4 flex space-x-2">
-
-            <a href="{{ route('characters.edit', $character) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
-                Modifier
-            </a>
-
         </div>
     </div>
     @if($character && $character->is_created == 1)

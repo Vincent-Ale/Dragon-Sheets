@@ -1,76 +1,126 @@
 <x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        @if (session('success'))
-            <div class="bg-green-500 text-white p-4 rounded mb-4">
-                {{ session('success') }}
+        
+
+        <div class="bg-gravel w-72 h-16 mx-4 flex items-center justify-center rounded-lg">
+            <div class="bg-blue flex w-[17rem] h-12 rounded-lg text-4xl text-center items-center justify-center pt-2 ">
+                <h1>Personnage</h1>
             </div>
-        @endif
+        </div>
 
-        @if (session('error'))
-            <div class="bg-red-500 text-white p-4 rounded mb-4">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Edit Character
-        </h2>
-
-        <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="mt-4 shadow overflow-hidden sm:rounded-lg">
             <form action="{{ route('characters.update', $character) }}" method="POST" class="p-6">
                 @csrf
                 @method('PUT')
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" name="name" id="name" value="{{ $character->name }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <label for="name" class="text-3xl txt-orange">Name</label>
+                        <input type="text" name="name" id="name" value="{{ $character->name }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco" required>
                     </div>
 
                     <div>
-                        <label for="race" class="block text-sm font-medium text-gray-700">Race</label>
-                        <input type="text" name="race" id="race" value="{{ $character->race }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <label for="race" class="text-3xl txt-orange">Race</label>
+                        <input type="text" name="race" id="race" value="{{ $character->race }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco" required>
+                    </div>
+                    <div class="flex flex-row">
+                        <div>
+                            <label for="level" class="text-3xl txt-orange">Level</label>
+                            <input type="number" name="level" id="level" oninput="CalculProfy()" value="{{ $character->level }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco" required>
+                        </div>
+
+                        <div>
+                            <label for="proficiency" class="text-3xl txt-orange">Maîtrise</label>
+                            <input type="number" name="proficiency" id="proficiency" value="{{ $character->proficiency }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco" readonly>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="class" class="text-3xl txt-orange">Class</label>
+                        <input type="text" name="class" id="class" value="{{ $character->class }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco" required>
                     </div>
 
                     <div>
-                        <label for="level" class="block text-sm font-medium text-gray-700">Level</label>
-                        <input type="number" name="level" id="level" oninput="CalculProfy()" value="{{ $character->level }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <label for="subclass_one" class="text-3xl txt-orange">Subclass One</label>
+                        <input type="text" name="subclass_one" id="subclass_one" value="{{ $character->subclass_one }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">
                     </div>
 
                     <div>
-                        <label for="proficiency" class="block text-sm font-medium text-gray-700">Maîtrise</label>
-                        <input type="number" name="proficiency" id="proficiency" value="{{ $character->proficiency }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" readonly>
+                        <label for="subclass_two" class="text-3xl txt-orange">Subclass Two</label>
+                        <input type="text" name="subclass_two" id="subclass_two" value="{{ $character->subclass_two }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">
                     </div>
 
                     <div>
-                        <label for="class" class="block text-sm font-medium text-gray-700">Class</label>
-                        <input type="text" name="class" id="class" value="{{ $character->class }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <label for="alignment" class="text-3xl txt-orange">Alignment</label>
+                        <input type="text" name="alignment" id="alignment" value="{{ $character->alignment }}" class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">
+                    </div>
+                </div>
+                <div class="flex flex-row justify-center gap-x-4 pt-2 pb-2">
+                    <div x-data="{ showModal: false }" x-init="$watch('showModal', value => document.body.classList.toggle('overflow-hidden', value))">
+                        <div x-on:click="showModal = true" class="ml-4 inline-flex items-center px-2 py-2 bg-cyan border border-transparent rounded-md text-lg">
+                            <img class="lore-notepad" src="/images/loreblue.png" alt="icone de plume pour afficher le lore personnage">
+                            <p class="txt-darkBlue">Lore</p>
+                        </div>
+
+                        <!-- Modal Background -->
+                        <div x-show="showModal" class="fixed inset-0 overflow-y-auto " style="display: none;">
+                            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                <!-- Modal Overlay -->
+                                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                </div>
+                        
+                                <!-- Modal Content -->
+                                <div x-on:click.away="showModal = false" class="absolute modal" role="dialog" aria-modal="true" x-show="showModal" style="display: none;">
+                                            <div class="mt-2 pt-8 px-4 h-4/5">
+                                                <label for="lore" class="text-xl font-medium text-gray-900">Character Lore</label>
+                                                <textarea name="lore" id="lore" rows="3" class="w-60 h-[95%] text-lg txt-darkBlue">{{ $character->lore }}</textarea>
+                                            </div>
+                                    <button x-on:click="showModal = false" type="button" class="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 w-20 rounded-md border border-transparent shadow-sm px-4 py-2 txt-darkBlue bg-cyan">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div>
-                        <label for="subclass_one" class="block text-sm font-medium text-gray-700">Subclass One</label>
-                        <input type="text" name="subclass_one" id="subclass_one" value="{{ $character->subclass_one }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                    </div>
+                    {{-- Notepad modal section --}}
 
-                    <div>
-                        <label for="subclass_two" class="block text-sm font-medium text-gray-700">Subclass Two</label>
-                        <input type="text" name="subclass_two" id="subclass_two" value="{{ $character->subclass_two }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                    </div>
+                    <div x-data="{ showModal: false }" x-init="$watch('showModal', value => document.body.classList.toggle('overflow-hidden', value))">
+                        <div x-on:click="showModal = true" class="mr-4 inline-flex items-center px-2 py-2 bg-cyan border border-transparent rounded-md">
+                            <img class="lore-notepad pr-2" src="/images/edit.png" alt="icone de plume pour afficher les notes du personnage">
+                            <p class="txt-darkBlue">Notepad</p>
+                        </div>
 
-                    <div>
-                        <label for="alignment" class="block text-sm font-medium text-gray-700">Alignment</label>
-                        <input type="text" name="alignment" id="alignment" value="{{ $character->alignment }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
-                    </div>
-
-                    <div>
-                        <label for="lore" class="block text-sm font-medium text-gray-700">Lore</label>
-                        <textarea name="lore" id="lore" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">{{ $character->lore }}</textarea>
-                    </div>
-
-                    <div>
-                        <label for="notepad" class="block text-sm font-medium text-gray-700">Notepad</label>
-                        <textarea name="notepad" id="notepad" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">{{ $character->notepad }}</textarea>
+                        <!-- Modal Background -->
+                        <div x-show="showModal" class="fixed inset-0 overflow-y-auto" style="display: none;">
+                            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                <!-- Modal Overlay -->
+                                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                </div>
+                        
+                                <!-- Modal Content -->
+                                <div x-on:click.away="showModal = false" class="absolute modal" role="dialog" aria-modal="true" x-show="showModal" style="display: none;">
+                                    <div class=" px-4 pt-10 pb-4">
+                                        
+                                        <!-- Modal Content -->
+                                <div x-on:click.away="showModal = false" class="absolute modal" role="dialog" aria-modal="true" x-show="showModal" style="display: none;">
+                                    <div class="mt-2 pt-8 px-4 h-4/5">
+                                        <label for="lore" class="text-xl font-medium text-gray-900">Notepad</label>
+                                        <textarea name="lore" id="lore" rows="3" class="w-60 h-[95%] text-lg txt-darkBlue">{{ $character->notepad }}</textarea>
+                                    </div>
+                            <button x-on:click="showModal = false" type="button" class="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 w-20 rounded-md border border-transparent shadow-sm px-4 py-2 txt-darkBlue bg-cyan">
+                                Close
+                            </button>
+                        </div>
+                                    </div>
+                                    <button x-on:click="showModal = false" type="button" class="absolute bottom-[10%] left-1/2 transform -translate-x-1/2  w-20 rounded-md border border-transparent shadow-sm px-4 py-2 txt-darkBlue bg-cyan">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -82,9 +132,11 @@
                         Cancel
                     </a>
                 </div>
+                
             </form>
         </div>
     </div>
+
     @if($character && $character->is_created == 1)
         <nav class="navbar-char h-24 flex flex-row justify-center items-center">
             <a class="" href="{{ route('characters.show', $character) }}"><img class="icons-nav p-4" src="/images/icons/avatar-orange.png" alt=""></a>

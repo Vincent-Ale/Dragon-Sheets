@@ -46,6 +46,7 @@ input[type="text"] {
     outline: none;
     background: transparent;
     max-width: 200px;
+    
 }
 
 input.input-hidden {
@@ -348,6 +349,15 @@ p{
     background: linear-gradient(to top, #0B0B0B, #0b0b0b00);
 }
 
+.icons-nav{
+    width: 100px;
+    height: 100px;
+}
+
+.bg-blue-char{
+    background-color: var(--dark-blue-color);
+}
+
 .footer-create-box{
     background-color: var(--dark-blue-color);    
 }
@@ -384,9 +394,20 @@ p{
     color: var(--orange-color);
 }
 
+.txt-darkBlue{
+    font-family: 'Trade Winds', display;
+    color: var(--dark-blue-color);
+}
+
 .input-deco{
     background-color: var(--grey-transparent);
     border-color: var(--cyan-color);
+    color: var(--cyan-color);
+}
+
+.lore-notepad{
+    width: 30px;
+    height: 30px;
 }
 
 /* ###################################################################################################### */
