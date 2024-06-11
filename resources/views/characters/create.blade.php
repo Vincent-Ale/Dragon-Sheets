@@ -12,16 +12,23 @@
             </div>
         @endif
 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Create New Character
-        </h2>
+        <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg" x-data="{ imagePreview: '' }">
+            <div class="img-container flex flex-col items-center justify-center relative mb-2">
+                <img x-show="imagePreview" x-bind:src="imagePreview" alt="Image Preview" class="profil-img relative z-10">
+                <img class="profil-cadre absolute top-0 left-0 z-20" src="/images/cadre.png" alt="Cadre d'image de profil">
+            </div>
 
-        <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg">
             <form action="{{ route('characters.store') }}" method="POST" enctype="multipart/form-data" class="p-6">
                 @csrf
 
-                <label for="image">Upload Image:</label>
-                <input type="file" name="image" id="image">
+                <label for="image" class="block text-sm font-medium text-gray-700">Upload Image:</label>
+                <input type="file" name="image" id="image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    @change="let file = $event.target.files[0];
+                             if (file) {
+                                 let reader = new FileReader();
+                                 reader.onload = (e) => imagePreview = e.target.result;
+                                 reader.readAsDataURL(file);
+                             }">
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>

@@ -25,7 +25,6 @@
         </div>
     </div>
 
-    {{-- <a href="{{ route('characters.create') }}">Create a new character</a> --}}
     <div class="effect-top"></div>
     <div class="effect-scroll">
         <ul class="list-scroll relative overflow-y-scroll pt-4 pb-4">

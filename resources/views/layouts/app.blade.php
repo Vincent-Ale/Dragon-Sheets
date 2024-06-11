@@ -20,9 +20,9 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased" x-data>
         <x-banner />
-
+        
         <div class=""><!--class="min-h-screen"  -->
 
             <!-- Page Content -->

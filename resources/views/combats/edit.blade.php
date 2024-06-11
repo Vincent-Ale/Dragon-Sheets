@@ -20,7 +20,7 @@
                             <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-gray-500">Health Point</dt>
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="text" name="combats[{{ $combat->id }}][health_point]" value="{{ $combat->health_point }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    <input type="number" name="combats[{{ $combat->id }}][health_point]" value="{{ $combat->health_point }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                                 </dd>
                             </div>
                             <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
