@@ -1,5 +1,7 @@
 <x-menu />
+
 <x-app-layout>
+    
     <div class="mx-auto py-4">
         
 
