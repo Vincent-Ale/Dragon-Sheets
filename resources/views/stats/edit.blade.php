@@ -18,9 +18,9 @@
                 <div class="flex flex-col items-center mt-6">
                     @foreach ($character->stats as $stat)
 
-                        <div class="stat-group mb-6 p-2 rounded-md border">
+                        <div class="stat-group mb-6 rounded-md border-4">
 
-                            <div class="name-stat-profi flex flex-row items-end justify-between mb-1">
+                            <div class="name-stat-profi flex flex-row items-end justify-between mb-1 px-2">
                                 <input type="text" name="stats[{{ $stat->id }}][name]" value="{{ $stat->name }}" readonly class="stat-name input-no-padding text-left text-2xl">
                                 <div class="flex flex-row items-center">
                                     <dt class="cyan-text text-xl font-medium mr-2">Maîtrise</dt>
@@ -32,7 +32,7 @@
                             </div>
                             
                             <div class="box-stats flex flex-row">
-                                <div class="modithrow flex flex-col justify-center mr-2">
+                                <div class="modithrow flex flex-col justify-center mr-1 rounded-bl-md">
                                     <div class="flex flex-row items-center p-2">
                                         <dd class="text-3xl text-white">
                                             <input type="number" class="modifier input-hidden" name="stats[{{ $stat->id }}][modifier]" value="{{ $stat->modifier }}" readonly>
@@ -46,7 +46,7 @@
                                         <dt class="cyan-text text-l font-medium">Jets de Sauvegarde</dt>
                                     </div>
                                 </div>
-                                <div class="base-bonus flex flex-col justify-center">
+                                <div class="base-bonus flex flex-col justify-center rounded-br-md grow">
                                     <div class="flex flex-row items-center p-2">
                                         <dd class="case-stat mr-1 rounded text-xl">
                                             <input type="number" class="base rounded input-stat" name="stats[{{ $stat->id }}][base]" value="{{ $stat->base }}">
@@ -65,7 +65,7 @@
                     @endforeach
                 </div>
 
-                <div class="flex justify-center mt-4">
+                <div class="flex justify-center">
 
                     @if ($character->is_created == true)
 

@@ -16,11 +16,10 @@
     --purple-color: #533C93;
 
     --grey-color: #949494;
-    --grey-transparent : rgba(105, 105, 105, 0.5);
 
     --black-color: #0B0B0B;
 
-
+    --black-trans-color: rgba(0, 0, 0, 0.81);
 
 }
 
@@ -33,44 +32,12 @@ body{
     font-family: "Trade Winds", system-ui;
 }
 
-
-input.input-stat {
-    border: 2px solid var(--orange-color);
-    outline: none;
-    background: transparent;
-    width: 40px;
-    height: 32px;
-    padding: 1px;
-    text-align: center;
-    font-size: inherit;
-}
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-input.input-no-padding{
-    padding: 0;
-    border: none;
-    outline: none;
-    background: transparent;
-    max-width: 200px;
-    
-}
-
-input.input-hidden {
-    border: none;
-    outline: none;
-    background: transparent;
-    color: inherit;
-    font-size: inherit;
-    padding: 1px;
-    text-align: center;
-    width: 40px;
-    height: 36px;
-}
 
 /* ###################################################################################################### */
 /* #####                ################################################################################# */
@@ -83,6 +50,12 @@ input.input-hidden {
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
 
+
+
+
+/* ###################################################################################################### */
+/* #########################################  MENU  ##################################################### */
+/* ###################################################################################################### */
 .btn-menu{
     font-family: 'Trade Winds', display;
     color: var(--cyan-color);
@@ -107,7 +80,6 @@ input.input-hidden {
     height: 50px;
 }
 
-
 .bg-gravel{
     background-image: url('/public/images/gravel.png');
     background-color: var(--grey-color);
@@ -116,19 +88,6 @@ input.input-hidden {
 .bg-blue{
     background-color: var(--dark-blue-color);
 }
-
-.bg-cyan{
-    background-color: var(--cyan-color);
-}
-
-.bg-orange{
-    background-color: var(--orange-color);
-}
-
-.bg-purple{
-    background-color: var(--purple-color);
-}
-
 
 h1{
     font-family: "Vollkorn SC", serif;
@@ -155,6 +114,7 @@ p{
     background-color: var(--cyan-color);
     border: 4px solid var(--cyan-color);
 }
+/* ###################################################################################################### */
 
 
 
@@ -229,7 +189,6 @@ p{
 /* #####        &&      ################################################################################# */
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
-
 
 
 .modal{
@@ -369,15 +328,6 @@ p{
     background: linear-gradient(to top, #0B0B0B, #0b0b0b00);
 }
 
-.icons-nav{
-    width: 100px;
-    height: 100px;
-}
-
-.bg-blue-char{
-    background-color: var(--dark-blue-color);
-}
-
 .footer-create-box{
     background-color: var(--dark-blue-color);    
 }
@@ -385,13 +335,9 @@ p{
 .footer-create{
     font-family: 'Trade Winds', display;
 }
-
-
 /* ###################################################################################################### */
 /* ###################################################################################################### */
 /* ###################################################################################################### */
-
-
 
 
 
@@ -409,33 +355,12 @@ p{
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
 
-.txt-lore-notepad{
-    font-family: 'Trade Winds', display;
-    color: #1A0000
-}
 
-.txt-button-lore-notepad{
-    font-family: 'Trade Winds', display;
-    color: #BE8252
-}
 
-.bg-lore-notepad{
-    background-color: #1A0000
-}
+/* ###################################################################################################### */
+/* ##################################          NAVBAR           ######################################### */
+/* ###################################################################################################### */
 
-.txt-orange{
-    font-family: 'Trade Winds', display;
-    color: var(--orange-color)
-}
-
-.txt-cyan{
-    font-family: 'Trade Winds', display;
-    color: var(--cyan-color)
-}
-
-.font-winds{
-    font-family: 'Trade Winds', display;
-}
 .icons-nav{
     width: 100px;
     height: 100px;
@@ -456,6 +381,8 @@ p{
     color: var(--dark-blue-color);
     font-family: "Vollkorn SC", serif;
 }
+/* ###################################################################################################### */
+
 
 
 /* ###################################################################################################### */
@@ -466,8 +393,8 @@ p{
     font-size: 1.7rem;
 }
 .stat-group{
-    background-color: var(--dark-blue-color);
-    border-color: var(--cyan-color);
+    background-color: var(--cyan-color-trans);
+    border-color: var(--cyan-color-trans);
     font-family: "Vollkorn SC", serif;
 
 }
@@ -528,25 +455,155 @@ p{
     transform: none;
 }
 
+.name-stat-profi{
+    background-color: var(--dark-blue-color);
+}
 .stat-name{
     color: var(--orange-color);
 }
 
-.txt-darkBlue{
-    font-family: 'Trade Winds', display;
-    color: var(--dark-blue-color);
-}
-
-.input-deco{
-    background-color: var(--grey-transparent);
-    border-color: var(--cyan-color);
+.cyan-text{
     color: var(--cyan-color);
 }
 
-.lore-notepad{
-    width: 30px;
-    height: 30px;
+.modithrow{
+    background-color: var(--blue-color);
 }
+
+.base-bonus{
+    background-color: var(--blue-color);
+}
+
+input.input-no-padding{
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    max-width: 200px;
+}
+
+input.input-hidden {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    padding: 1px;
+    text-align: center;
+    width: 40px;
+    height: 36px;
+}
+
+input.input-stat {
+    border: 2px solid var(--orange-color);
+    outline: none;
+    background: transparent;
+    width: 40px;
+    height: 32px;
+    padding: 1px;
+    text-align: center;
+    font-size: inherit;
+}
+/* ###################################################################################################### */
+
+
+
+
+/* ###################################################################################################### */
+/* ###############################       PARAMETRE DE COMBAT       ###################################### */
+/* ###################################################################################################### */
+
+.titre-combat{
+    font-size: 2rem;
+}
+.combat-container{
+    font-family: "Trade Winds", system-ui;
+    color: var(--orange-color);
+}
+
+.combat-name{
+    color: var(--cyan-color);
+    background-color: var(--dark-blue-color);
+    width: 350px;
+    height: 40px;
+}
+
+.combat-name-bg{
+    width: 360px;
+    background-color: var(--cyan-color-trans);
+    height: 50px;
+}
+
+.icon-combat{
+    width: 70px;
+    height: 50px;
+    background-color: var(--dark-blue-color);
+}
+
+.icon-combat-bg{
+    width: 80px;
+    height: 55px;
+    background-color: var(--cyan-color-trans);
+}
+
+.combat-value-bg{
+    width: 240px;
+    height: 40px;
+    background-color: var(--cyan-color-trans);
+}
+
+.combat-value{
+    width: 230px;
+    height: 35px;
+    background-color: var(--blue-color);
+}
+
+.select-style {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    padding-left: 6.5rem;
+}
+
+.select-style option {
+    display: flex;
+    align-items: center;
+    background-color: var(--blue-color);
+}
+
+.select-style2 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+}
+
+.select-style2 option {
+    background-color: var(--blue-color);
+}
+
+.select-style:focus, .select-style2:focus {
+    box-shadow: 0 0 0 0 transparent;
+    border-color: transparent;
+}
+
+
+.select-style3:focus {
+    box-shadow: 0 0 0 0 transparent;
+    border-color: transparent;
+}
+
+
+
+
+/* ###################################################################################################### */
+
+
+
+
+
+
 
 /* ###################################################################################################### */
 /* ###################################################################################################### */
