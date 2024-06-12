@@ -121,6 +121,15 @@ input.input-hidden {
     background-color: var(--cyan-color);
 }
 
+.bg-orange{
+    background-color: var(--orange-color);
+}
+
+.bg-purple{
+    background-color: var(--purple-color);
+}
+
+
 h1{
     font-family: "Vollkorn SC", serif;
     color: var(--cyan-color);
@@ -402,7 +411,17 @@ p{
 
 .txt-orange{
     font-family: 'Trade Winds', display;
+    color: var(--orange-color)
+}
 
+.txt-cyan{
+    font-family: 'Trade Winds', display;
+    color: var(--cyan-color)
+}
+
+.font-winds{
+    font-family: 'Trade Winds', display;
+}
 .icons-nav{
     width: 100px;
     height: 100px;
