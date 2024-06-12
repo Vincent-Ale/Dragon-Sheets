@@ -1,99 +1,209 @@
 <x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Edit Combat for {{ $character->name }}
-        </h2>
+        
+        <div class="bg-gravel w-64 h-20 ml-7 flex items-center justify-center rounded-lg">
+            <div class="bg-blue flex w-60 h-16 rounded-lg text-4xl text-center items-center justify-center pt-2 ">
+                <h1 class="titre-combat leading-6 pb-1" >Paramètres <br> de Combat</h1>
+            </div>
+        </div>
 
-        <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="">
             <form action="{{ route('combats.update', $character) }}" method="POST">
                 @csrf
                 @method('PUT')
                 
-                <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">Combat Parameters</h3>
-                </div>
-                <div class="border-t border-gray-200">
-                    <dl>
-                        @foreach ($character->combats as $combat)
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Health Point</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][health_point]" value="{{ $combat->health_point }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Armor Class</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][armor_class]" value="{{ $combat->armor_class }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Passive Perception</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][passive_perception]" value="{{ $combat->passive_perception }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Speed</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][speed]" value="{{ $combat->speed }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Initiative</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][initiative]" value="{{ $combat->initiative }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Spell Save DC</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][spell_save_dc]" value="{{ $combat->spell_save_dc }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Spell Bonus</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <input type="number" name="combats[{{ $combat->id }}][spell_bonus]" value="{{ $combat->spell_bonus }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Dices of Life</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <select name="combats[{{ $combat->id }}][dices_of_life]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                        <option value="6" {{ $combat->dices_of_life == 6 ? 'selected' : '' }}>6</option>
-                                        <option value="8" {{ $combat->dices_of_life == 8 ? 'selected' : '' }}>8</option>
-                                        <option value="10" {{ $combat->dices_of_life == 10 ? 'selected' : '' }}>10</option>
-                                        <option value="12" {{ $combat->dices_of_life == 12 ? 'selected' : '' }}>12</option>
-                                    </select>
-                                </dd>
-                            </div>
-                            <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">Spellcasting Ability</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <select name="combats[{{ $combat->id }}][spellcasting_ability]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                                        <option value="Intelligence" {{ $combat->spellcasting_ability == 'Intelligence' ? 'selected' : '' }}>Intelligence</option>
-                                        <option value="Charisme" {{ $combat->spellcasting_ability == 'Charisme' ? 'selected' : '' }}>Charisme</option>
-                                        <option value="Sagesse" {{ $combat->spellcasting_ability == 'Sagesse' ? 'selected' : '' }}>Sagesse</option>
-                                    </select>
-                                </dd>
-                            </div>                            
-                        @endforeach
-                    </dl>
+                <div class="mt-6">
+                    <div class="combat-container px-2">
+                        <dl>
+                            @foreach ($character->combats as $combat)
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/heart.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Points de Vie</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <input type="number" name="combats[{{ $combat->id }}][health_point]" value="{{ $combat->health_point }}" class="block rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-[#2A3D80] focus:ring-2 focus:ring-inset focus:ring-[#2A3D80] w-[190px] h-[35px] pb-1 -translate-y-1 text-center border-none bg-transparent text-2xl text-white">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/armor.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Classe d' Armure</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <input type="number" name="combats[{{ $combat->id }}][armor_class]" value="{{ $combat->armor_class }}" class="block rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-[#2A3D80] focus:ring-2 focus:ring-inset focus:ring-[#2A3D80] w-[190px] h-[35px] pb-1 -translate-y-1 text-center border-none bg-transparent text-2xl text-white">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/eye.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Perception Passive</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <input type="number" name="combats[{{ $combat->id }}][passive_perception]" value="{{ $combat->passive_perception }}" class="block rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-[#2A3D80] focus:ring-2 focus:ring-inset focus:ring-[#2A3D80] w-[190px] h-[35px] pb-1 -translate-y-1 text-center border-none bg-transparent text-2xl text-white">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/sprint.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Vitesse</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <input type="number" name="combats[{{ $combat->id }}][speed]" value="{{ $combat->speed }}" class="block rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-[#2A3D80] focus:ring-2 focus:ring-inset focus:ring-[#2A3D80] w-[190px] h-[35px] pb-1 -translate-y-1 text-center border-none bg-transparent text-2xl text-white">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/chrono.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Initiative</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <input type="number" name="combats[{{ $combat->id }}][initiative]" value="{{ $combat->initiative }}" class="block rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-[#2A3D80] focus:ring-2 focus:ring-inset focus:ring-[#2A3D80] w-[190px] h-[35px] pb-1 -translate-y-1 text-center border-none bg-transparent text-2xl text-white">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/bonus-spell.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">DD Sauvegarde de Sorts</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <input type="number" name="combats[{{ $combat->id }}][spell_save_dc]" value="{{ $combat->spell_save_dc }}" class="block rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-[#2A3D80] focus:ring-2 focus:ring-inset focus:ring-[#2A3D80] w-[190px] h-[35px] pb-1 -translate-y-1 text-center border-none bg-transparent text-2xl text-white">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/attack-spell.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Bonus d' Attaque des Sorts</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <input type="number" name="combats[{{ $combat->id }}][spell_bonus]" value="{{ $combat->spell_bonus }}" class="block rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-[#2A3D80] focus:ring-2 focus:ring-inset focus:ring-[#2A3D80] w-[190px] h-[35px] pb-1 -translate-y-1 text-center border-none bg-transparent text-2xl text-white">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/dice.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Dés de Vie</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <select name="combats[{{ $combat->id }}][dices_of_life]" class="select-style w-[230px] h-[35px] pt-1 -translate-y-1 text-left border-none bg-transparent text-2xl text-white">
+                                                    <option value="6" {{ $combat->dices_of_life == 6 ? 'selected' : '' }}>6</option>
+                                                    <option value="8" {{ $combat->dices_of_life == 8 ? 'selected' : '' }}>8</option>
+                                                    <option value="10" {{ $combat->dices_of_life == 10 ? 'selected' : '' }}>10</option>
+                                                    <option value="12" {{ $combat->dices_of_life == 12 ? 'selected' : '' }}>12</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col mt-5 mb-6">
+                                    <div class="combat-line flex flex-col items-center">
+                                        <div class="icon-combat-bg rounded-t-full flex justify-center items-end">
+                                            <div class="icon-combat rounded-t-full flex justify-center items-end pb-1">
+                                                <img class="w-10 h-10 " src="/images/icons/book.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="combat-name-bg rounded-full flex justify-center items-center">
+                                            <dt class="combat-name rounded-full text-2xl text-center flex justify-center items-center pt-1">Bonus d'Incantation</dt>
+                                        </div>
+                                        <div class="combat-value-bg flex justify-center items-start rounded-b-md">
+                                            <div class="combat-value flex justify-center items-start pt-1 rounded-b-md">
+                                                <select name="combats[{{ $combat->id }}][spellcasting_ability]" class="select-style2 w-[230px] h-[35px] pl-11 pt-1 -translate-y-1 text-left border-none bg-transparent text-2xl text-white">
+                                                    <option value="Intelligence" {{ $combat->spellcasting_ability == 'Intelligence' ? 'selected' : '' }}>Intelligence</option>
+                                                    <option value="Charisme" {{ $combat->spellcasting_ability == 'Charisme' ? 'selected' : '' }}>Charisme</option>
+                                                    <option value="Sagesse" {{ $combat->spellcasting_ability == 'Sagesse' ? 'selected' : '' }}>Sagesse</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </dl>
+                    </div>
                 </div>
 
-                <div class="mt-4 flex space-x-2">
+                <div class="flex justify-center">
                     
                     @if ($character->is_created == true)
 
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+                    <button type="submit" class="btn-modif mr-4 inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
                         Sauvegarder
                     </button>
 
                     @else
 
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+                    <button type="submit" class="btn-modif mr-4 inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
                         Suivant
                     </button>
 
@@ -101,7 +211,7 @@
 
                     @if ($character->is_created == true)
                     
-                    <a href="{{ route('combats.index', $character) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:ring focus:ring-gray-200 disabled:opacity-25 transition">
+                    <a href="{{ route('combats.index', $character) }}" class="btn-cancel inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
                         Annuler
                     </a>
 

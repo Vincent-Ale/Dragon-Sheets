@@ -19,6 +19,8 @@
 
     --black-color: #0B0B0B;
 
+    --black-trans-color: rgba(0, 0, 0, 0.81);
+
 }
 
 html{
@@ -30,43 +32,12 @@ body{
     font-family: "Trade Winds", system-ui;
 }
 
-
-input.input-stat {
-    border: 2px solid var(--orange-color);
-    outline: none;
-    background: transparent;
-    width: 40px;
-    height: 32px;
-    padding: 1px;
-    text-align: center;
-    font-size: inherit;
-}
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-input.input-no-padding{
-    padding: 0;
-    border: none;
-    outline: none;
-    background: transparent;
-    max-width: 200px;
-}
-
-input.input-hidden {
-    border: none;
-    outline: none;
-    background: transparent;
-    color: inherit;
-    font-size: inherit;
-    padding: 1px;
-    text-align: center;
-    width: 40px;
-    height: 36px;
-}
 
 /* ###################################################################################################### */
 /* #####                ################################################################################# */
@@ -79,6 +50,12 @@ input.input-hidden {
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
 
+
+
+
+/* ###################################################################################################### */
+/* #########################################  MENU  ##################################################### */
+/* ###################################################################################################### */
 .btn-menu{
     font-family: 'Trade Winds', display;
     color: var(--cyan-color);
@@ -102,7 +79,6 @@ input.input-hidden {
     width: 50px;
     height: 50px;
 }
-
 
 .bg-gravel{
     background-image: url('/public/images/gravel.png');
@@ -138,6 +114,7 @@ p{
     background-color: var(--cyan-color);
     border: 4px solid var(--cyan-color);
 }
+/* ###################################################################################################### */
 
 
 
@@ -212,7 +189,6 @@ p{
 /* #####        &&      ################################################################################# */
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
-
 
 
 .modal{
@@ -359,13 +335,9 @@ p{
 .footer-create{
     font-family: 'Trade Winds', display;
 }
-
-
 /* ###################################################################################################### */
 /* ###################################################################################################### */
 /* ###################################################################################################### */
-
-
 
 
 
@@ -383,6 +355,11 @@ p{
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
 
+
+
+/* ###################################################################################################### */
+/* ##################################          NAVBAR           ######################################### */
+/* ###################################################################################################### */
 
 .icons-nav{
     width: 100px;
@@ -404,6 +381,8 @@ p{
     color: var(--dark-blue-color);
     font-family: "Vollkorn SC", serif;
 }
+/* ###################################################################################################### */
+
 
 
 /* ###################################################################################################### */
@@ -414,8 +393,8 @@ p{
     font-size: 1.7rem;
 }
 .stat-group{
-    background-color: var(--dark-blue-color);
-    border-color: var(--cyan-color);
+    background-color: var(--cyan-color-trans);
+    border-color: var(--cyan-color-trans);
     font-family: "Vollkorn SC", serif;
 
 }
@@ -476,6 +455,9 @@ p{
     transform: none;
 }
 
+.name-stat-profi{
+    background-color: var(--dark-blue-color);
+}
 .stat-name{
     color: var(--orange-color);
 }
@@ -492,7 +474,136 @@ p{
     background-color: var(--blue-color);
 }
 
+input.input-no-padding{
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    max-width: 200px;
+}
+
+input.input-hidden {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    padding: 1px;
+    text-align: center;
+    width: 40px;
+    height: 36px;
+}
+
+input.input-stat {
+    border: 2px solid var(--orange-color);
+    outline: none;
+    background: transparent;
+    width: 40px;
+    height: 32px;
+    padding: 1px;
+    text-align: center;
+    font-size: inherit;
+}
 /* ###################################################################################################### */
+
+
+
+
+/* ###################################################################################################### */
+/* ###############################       PARAMETRE DE COMBAT       ###################################### */
+/* ###################################################################################################### */
+
+.titre-combat{
+    font-size: 2rem;
+}
+.combat-container{
+    font-family: "Trade Winds", system-ui;
+    color: var(--orange-color);
+}
+
+.combat-name{
+    color: var(--cyan-color);
+    background-color: var(--dark-blue-color);
+    width: 350px;
+    height: 40px;
+}
+
+.combat-name-bg{
+    width: 360px;
+    background-color: var(--cyan-color-trans);
+    height: 50px;
+}
+
+.icon-combat{
+    width: 70px;
+    height: 50px;
+    background-color: var(--dark-blue-color);
+}
+
+.icon-combat-bg{
+    width: 80px;
+    height: 55px;
+    background-color: var(--cyan-color-trans);
+}
+
+.combat-value-bg{
+    width: 240px;
+    height: 40px;
+    background-color: var(--cyan-color-trans);
+}
+
+.combat-value{
+    width: 230px;
+    height: 35px;
+    background-color: var(--blue-color);
+}
+
+.select-style {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    padding-left: 6.5rem;
+}
+
+.select-style option {
+    display: flex;
+    align-items: center;
+    background-color: var(--blue-color);
+}
+
+.select-style2 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+}
+
+.select-style2 option {
+    background-color: var(--blue-color);
+}
+
+.select-style:focus, .select-style2:focus {
+    box-shadow: 0 0 0 0 transparent;
+    border-color: transparent;
+}
+
+
+.select-style3:focus {
+    box-shadow: 0 0 0 0 transparent;
+    border-color: transparent;
+}
+
+
+
+
+/* ###################################################################################################### */
+
+
+
+
+
+
 
 /* ###################################################################################################### */
 /* ###################################################################################################### */

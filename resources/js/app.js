@@ -65,6 +65,3 @@ document.querySelectorAll('.stat-group').forEach(function(group) {
         CalculSavy(modifierElement, profiboxElement, savingThrowElement, recoveryProfy);
     });
 });
-
-
-
