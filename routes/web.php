@@ -49,6 +49,9 @@ Route::put('/characters/update/{character}', [CharacterController::class,'update
 Route::delete('/characters/destroy/{character}', [CharacterController::class,'destroy'])
 ->name('characters.destroy');
 
+Route::put('/characters/show/{character}/update-lore', [CharacterController::class, 'updateLore'])->name('characters.updateLore');
+Route::put('/characters/show/{character}/update-notepad', [CharacterController::class, 'updateNotepad'])->name('characters.updateNotepad');
+
 //#############################################################################################################
 //####################################   CHARACTERS END  ######################################################
 //############################################################################################################# 

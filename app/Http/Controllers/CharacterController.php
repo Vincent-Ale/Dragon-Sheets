@@ -182,6 +182,40 @@ class CharacterController extends Controller
     }
 
 
+    public function updateLore(Request $request, Character $character)
+    {
+        // Validation des données
+        $request->validate([
+            'lore' => 'required|string|max:65000',
+        ]);
+
+        // Mise à jour du lore
+        $character->update([
+            'lore' => $request->input('lore'),
+        ]);
+
+        // Redirection avec un message de succès
+        return redirect()->route('characters.show', $character)->with('success', 'Lore mis à jour avec succès');
+    }
+
+    // Méthode pour mettre à jour le notepad
+    public function updateNotepad(Request $request, Character $character)
+    {
+        // Validation des données
+        $request->validate([
+            'notepad' => 'required|string|max:65000',
+        ]);
+
+        // Mise à jour du notepad
+        $character->update([
+            'notepad' => $request->input('notepad'),
+        ]);
+
+        // Redirection avec un message de succès
+        return redirect()->route('characters.show', $character)->with('success', 'Notepad mis à jour avec succès');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      */

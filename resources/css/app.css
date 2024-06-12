@@ -409,6 +409,20 @@ p{
 /* #####                ################################################################################# */
 /* ###################################################################################################### */
 
+.txt-lore-notepad{
+    font-family: 'Trade Winds', display;
+    color: #1A0000
+}
+
+.txt-button-lore-notepad{
+    font-family: 'Trade Winds', display;
+    color: #BE8252
+}
+
+.bg-lore-notepad{
+    background-color: #1A0000
+}
+
 .txt-orange{
     font-family: 'Trade Winds', display;
     color: var(--orange-color)

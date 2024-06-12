@@ -70,16 +70,6 @@
                         <label for="alignment" class="block text-sm font-medium text-gray-700">Alignment</label>
                         <input type="text" name="alignment" id="alignment" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
                     </div>
-
-                    <div>
-                        <label for="lore" class="block text-sm font-medium text-gray-700">Lore</label>
-                        <textarea name="lore" id="lore" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"></textarea>
-                    </div>
-
-                    <div>
-                        <label for="notepad" class="block text-sm font-medium text-gray-700">Notepad</label>
-                        <textarea name="notepad" id="notepad" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"></textarea>
-                    </div>
                 </div>
 
                 <input name="is_created" type="hidden" value="0">
