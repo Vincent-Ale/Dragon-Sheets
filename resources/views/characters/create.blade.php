@@ -29,43 +29,44 @@
             >
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="name" class="text-3xl txt-orange">Name</label>
+                <div class="px-4 py-2">
+                    <label for="name" class="text-3xl txt-orange">Nom</label>
                     <input type="text" name="name" id="name" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
                 </div>
 
-                <div>
+                <div class="px-4 py-2">
                     <label for="race" class="text-3xl txt-orange">Race</label>
                     <input type="text" name="race" id="race" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
                 </div>
 
-                <div>
-                    <label for="level" class="text-3xl txt-orange">Level</label>
-                    <input type="number" name="level" id="level" oninput="CalculProfy()" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                <div class="flex flex-row">
+                    <div class="w-1/2 px-4 py-2">
+                        <label for="level" class="text-3xl txt-orange">Niveau</label>
+                        <input type="number" name="level" id="level" oninput="CalculProfy()" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                    </div>
+                    <div class="w-1/2 px-4 py-2">
+                        <label for="proficiency" class="text-3xl txt-orange">Maîtrise</label>
+                        <input type="number" name="proficiency" id="proficiency" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" readonly>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="proficiency" class="text-3xl txt-orange">Maîtrise</label>
-                    <input type="number" name="proficiency" id="proficiency" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" readonly>
-                </div>
-
-                <div>
-                    <label for="class" class="text-3xl txt-orange">Class</label>
+                <div class="px-4 py-2">
+                    <label for="class" class="text-3xl txt-orange">Classe</label>
                     <input type="text" name="class" id="class" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
                 </div>
 
                 <div>
-                    <label for="subclass_one" class="text-3xl txt-orange">Subclass One</label>
+                    <label for="subclass_one" class="text-3xl txt-orange">Première Sous-Classe</label>
                     <input type="text" name="subclass_one" id="subclass_one" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
                 </div>
 
                 <div>
-                    <label for="subclass_two" class="text-3xl txt-orange">Subclass Two</label>
+                    <label for="subclass_two" class="text-3xl txt-orange">Deuxième Sous-Classe</label>
                     <input type="text" name="subclass_two" id="subclass_two" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
                 </div>
 
                 <div>
-                    <label for="alignment" class="text-3xl txt-orange">Alignment</label>
+                    <label for="alignment" class="text-3xl txt-orange">Alignement</label>
                     <input type="text" name="alignment" id="alignment" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
                 </div>
             </div>

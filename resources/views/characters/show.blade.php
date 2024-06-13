@@ -10,7 +10,6 @@
         
         <!-- Détails du personnage -->
         <div class="mt-4 shadow overflow-hidden sm:rounded-lg">
-            <div>
                 <!-- Image de profil -->
                 <div class="img-container flex flex-col items-center justify-center relative mx-auto mt-2 mb-2">
                     <img class="profil-img relative" 
@@ -20,58 +19,63 @@
                 </div>
 
                 <!-- Attributs du personnage -->
-                <dl>
-                    <!-- Nom -->
-                    <div class="px-4 py-2">
-                        <dt class="text-3xl txt-orange">Nom</dt>
-                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->name }}</dd>
-                    </div>
-                    <!-- Race -->
-                    <div class="px-4 py-2">
-                        <dt class="text-3xl txt-orange">Race</dt>
-                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->race }}</dd>
-                    </div>
-                    <!-- Niveau et Maîtrise -->
-                    <div class="flex flex-row">
-                        <div class="w-1/2 px-4 py-2">
-                            <dt class="text-3xl txt-orange">Niveau</dt>
-                            <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->level }}</dd>
+
+                    <div class="settings-text rounded-lg mx-2 mt-6 pb-3">
+                        <!-- Nom -->
+                        <div class="px-4 py-2">
+                            <dt class="text-2xl">Nom</dt>
+                            <dd class="settings-border rounded-lg flex flex-row items-center p-2  text-xl border h-12">{{ $character->name }}</dd>
                         </div>
-                        <div class="w-1/2 px-4 py-2">
-                            <dt class="text-3xl txt-orange">Maîtrise</dt>
-                            <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->proficiency }}</dd>
+                        <!-- Race -->
+                        <div class="px-4 py-2">
+                            <dt class="text-2xl">Race</dt>
+                            <dd class="settings-border rounded-lg flex flex-row items-center p-2  text-xl border h-12">{{ $character->race }}</dd>
+                        </div>
+                        <!-- Niveau et Maîtrise -->
+                        <div class="flex flex-row">
+                            <div class="w-1/2 px-4 py-2">
+                                <dt class="text-2xl">Niveau</dt>
+                                <dd class="settings-border2 rounded-lg flex flex-row items-center p-2 text-white text-3xl border h-12">{{ $character->level }}</dd>
+                            </div>
+                            <div class="w-1/2 px-4 py-2">
+                                <dt class="text-2xl">Maîtrise</dt>
+                                <dd class="settings-border2 rounded-lg flex flex-row items-center p-2 text-white text-3xl border h-12">{{ $character->proficiency }}</dd>
+                            </div>
+                        </div>
+                        <!-- Classe -->
+                        <div class="px-4 py-2">
+                            <dt class="text-2xl">Classe</dt>
+                            <dd class="settings-border rounded-lg flex flex-row items-center p-2  text-xl border h-12">{{ $character->class }}</dd>
+                        </div>
+                        <!-- Sous-classes et Alignement -->
+                        <div class="px-4 py-2">
+                            <dt class="text-2xl">Première Sous-Classe</dt>
+                            <dd class="settings-border rounded-lg flex flex-row items-center p-2  text-xl border h-12">{{ $character->subclass_one }}</dd>
+                        </div>
+                        <div class="px-4 py-2">
+                            <dt class="text-2xl">Deuxième Sous-Classe</dt>
+                            <dd class="settings-border rounded-lg flex flex-row items-center p-2  text-xl border h-12">{{ $character->subclass_two }}</dd>
+                        </div>
+                        <div class="px-4 py-2">
+                            <dt class="text-2xl">Alignement</dt>
+                            <dd class="settings-border rounded-lg flex flex-row items-center p-2  text-xl border h-12">{{ $character->alignment }}</dd>
                         </div>
                     </div>
-                    <!-- Classe -->
-                    <div class="px-4 py-2">
-                        <dt class="text-3xl txt-orange">Classe</dt>
-                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->class }}</dd>
-                    </div>
-                    <!-- Sous-classes et Alignement -->
-                    <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
-                        <dt class="text-3xl txt-orange">Première Sous-classe</dt>
-                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->subclass_one }}</dd>
-                    </div>
-                    <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
-                        <dt class="text-3xl txt-orange">Deuxième Sous-classe</dt>
-                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->subclass_two }}</dd>
-                    </div>
-                    <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
-                        <dt class="text-3xl txt-orange">Alignement</dt>
-                        <dd class="flex flex-row items-center p-2 mt-1 text-xl border h-12 input-deco">{{ $character->alignment }}</dd>
-                    </div>
+
+                    
 
                     <!-- Modales et Actions -->
 
-                    <div class="flex flex-row justify-center gap-x-4 pt-2 pb-2">
+                    <div class="flex flex-row justify-center gap-x-4 mt-6">
+
 
                         {{-- Modale de Lore --}}
 
                         <div x-data="{ showModal: false }" x-init="$watch('showModal', value => document.body.classList.toggle('overflow-hidden', value))">
                            
-                            <div x-on:click="showModal = true" class="ml-4 inline-flex items-center px-2 py-2 bg-cyan border border-transparent rounded-md text-lg">
-                                <img class="lore-notepad" src="/images/loreblue.png" alt="icone de plume pour afficher le lore personnage">
-                                <p class="txt-darkBlue">Lore</p>
+                            <div x-on:click="showModal = true" class="btn-note-lore flex flex-row items-center px-4 py-2 rounded-full">
+                                <img class="lore-notepad w-10 h-10" src="/images/loreC.png" alt="icone de plume pour afficher le lore personnage">
+                                <p class="btn-text-color pl-2 text-2xl">Lore</p>
                             </div>
 
                             <!-- Fond de la modale -->
@@ -81,7 +85,7 @@
                                 <!-- Overlay de la modale -->
                                 
                                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    <div class="absolute inset-0 bg-black opacity-80"></div>
                                 </div>
                         
                                 <!-- Contenu de la modale -->
@@ -126,9 +130,9 @@
 
                         <div x-data="{ showModal: false }" x-init="$watch('showModal', value => document.body.classList.toggle('overflow-hidden', value))">
 
-                            <div x-on:click="showModal = true" class="inline-flex items-center px-2 py-2 bg-cyan border border-transparent rounded-md">
-                                <img class="lore-notepad pr-2" src="/images/edit.png" alt="icone de plume pour afficher les notes du personnage">
-                                <p class="txt-darkBlue">Notepad</p>
+                            <div x-on:click="showModal = true" class="btn-note-lore btn-note-lore flex flex-row items-center px-4 py-2 rounded-full">
+                                <img class="lore-notepad w-10 h-10" src="/images/editC.png" alt="icone de plume pour afficher les notes du personnage">
+                                <p class="btn-text-color pl-2 text-2xl">Notepad</p>
                             </div>
 
                             <!-- Fond de la modale -->
@@ -139,7 +143,7 @@
                                 <!-- Overlay de la modale -->
 
                                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    <div class="absolute inset-0 bg-black opacity-80"></div>
                                 </div>
                         
                                 <!-- Contenu de la modale -->
@@ -180,15 +184,16 @@
                             </div>
                         </div>
 
-                        {{-- Modifier le personnage --}}
-
-                        <a href="{{ route('characters.edit', $character) }}" class="txt-darkBlue flex items-center mr-4 h-12 px-2 bg-cyan border border-transparent rounded-md">
-                            Modifier
-                        </a>
                     </div>
-                </dl>
-            </div>
         </div>
+    </div>
+    
+    {{-- Modifier le personnage --}}
+
+    <div class="flex justify-center mb-6 mt-4">
+        <a href="{{ route('characters.edit', $character) }}" class="btn-modif inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
+            Modifier
+        </a>
     </div>
 
     <!-- Navigation du personnage -->

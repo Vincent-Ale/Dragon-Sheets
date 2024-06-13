@@ -2,7 +2,7 @@
 
 <x-app-layout>
     
-    <div class="mx-auto py-4">
+    <div class="max-w-7xl mx-auto py-3 sm:px-6 lg:px-8">
         
 
         <div class="bg-gravel w-72 h-16 mx-4 flex items-center justify-center rounded-lg">
@@ -11,62 +11,78 @@
             </div>
         </div>
 
-        <div class="flex flex-col items-center mt-6">
-            <form action="{{ route('characters.update', $character) }}" method="POST">
-                @csrf
-                @method('PUT')
+        <form action="{{ route('characters.update', $character) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            
+            <div class="mt-4 shadow overflow-hidden sm:rounded-lg">
+                <!-- Image de profil -->
+                <div class="img-container flex flex-col items-center justify-center relative mx-auto mt-2 mb-2">
+                    <img id="preview" src="{{ asset('storage/images/' . basename($character->image_path)) }}" alt="Image de profil" class="profil-img relative">
+                    <img class="profil-cadre absolute top-0 left-0" src="/images/cadre.png" alt="Cadre stylisé autour de l'image">
+                </div>
 
-                <div class="flex flex-col mx-4">
-                    <div class="pb-4">
-                        <label for="name" class="text-3xl txt-orange">Name</label>
-                        <input type="text" name="name" id="name" value="{{ $character->name }}" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
-                    </div>
+                <!-- Masquez l'input de type file -->
+                <input type="file" name="image" id="image" class="hidden" onchange="previewImage(event)">
 
-                    <div class="pb-4">
-                        <label for="race" class="text-3xl txt-orange">Race</label>
-                        <input type="text" name="race" id="race" value="{{ $character->race }}" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                <!-- Ajoutez un label pour l'input de type file avec une icône -->
+                <label for="image" class="settings-text flex flex-row items-center justify-center mx-12 mt-6 rounded-full">
+                    <img class="h-12 w-12 mr-2" src="/images/icons/upload.png" alt=""> <!-- Remplacez ceci par l'icône de votre choix -->
+                    <p class="cyan-text text-xl">Choisir une image</p>
+                </label>
+
+                <div class="settings-text flex flex-col items-center rounded-lg mx-2 mt-6 pt-2 pb-3">
+                    <!-- Nom -->
+                    <div class="px-4 py-2 w-full">
+                        <label for="name" class="text-2xl">Nom</label>
+                        <input type="text" name="name" id="name" value="{{ $character->name }}" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12" required>
                     </div>
-                    <div class="flex flex-row pb-4">
-                        <div class="mr-4">
-                            <label for="level" class="text-3xl txt-orange">Level</label>
-                            <input type="number" name="level" id="level" oninput="CalculProfy()" value="{{ $character->level }}" class="flex w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                    <!-- Race -->
+                    <div class="px-4 py-2 w-full">
+                        <label for="race" class="text-2xl">Race</label>
+                        <input type="text" name="race" id="race" value="{{ $character->race }}" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12" required>
+                    </div>
+                    <!-- Niveau et Maîtrise -->
+                    <div class="flex flex-row w-full">
+                        <div class="px-4 py-2 ">
+                            <label for="level" class="text-2xl">Niveau</label>
+                            <input type="number" name="level" id="level" oninput="CalculProfy()" value="{{ $character->level }}" class="w-full settings-border2 rounded-lg flex flex-row items-center p-2 text-white text-3xl border h-12" required>
                         </div>
-
-                        <div>
-                            <label for="proficiency" class="text-3xl txt-orange">Maîtrise</label>
-                            <input type="number" name="proficiency" id="proficiency" value="{{ $character->proficiency }}" class="flex w-full p-2 mt-1 text-xl border h-12 input-deco" readonly>
+                        <div class="px-4 py-2 ">
+                            <label for="proficiency" class="text-2xl">Maîtrise</label>
+                            <input type="number" name="proficiency" id="proficiency" value="{{ $character->proficiency }}" class="w-full settings-border2 rounded-lg flex flex-row items-center p-2 text-white text-3xl border h-12" readonly>
                         </div>
                     </div>
-                    <div class="pb-4">
-                        <label for="class" class="text-3xl txt-orange">Class</label>
-                        <input type="text" name="class" id="class" value="{{ $character->class }}" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                    <!-- Classe -->
+                    <div class="px-4 py-2 w-full">
+                        <label for="class" class="text-2xl">Classe</label>
+                        <input type="text" name="class" id="class" value="{{ $character->class }}" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12" required>
                     </div>
-
-                    <div class="pb-4">
-                        <label for="subclass_one" class="text-3xl txt-orange">Subclass One</label>
-                        <input type="text" name="subclass_one" id="subclass_one" value="{{ $character->subclass_one }}" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
+                    <!-- Sous-classes et Alignement -->
+                    <div class="px-4 py-2 w-full">
+                        <label for="subclass_one" class="text-2xl">Première Sous-classe</label>
+                        <input type="text" name="subclass_one" id="subclass_one" value="{{ $character->subclass_one }}" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12">
                     </div>
-
-                    <div class="pb-4">
-                        <label for="subclass_two" class="text-3xl txt-orange">Subclass Two</label>
-                        <input type="text" name="subclass_two" id="subclass_two" value="{{ $character->subclass_two }}" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
+                    <div class="px-4 py-2 w-full">
+                        <label for="subclass_two" class="text-2xl">Deuxième Sous-Classe</label>
+                        <input type="text" name="subclass_two" id="subclass_two" value="{{ $character->subclass_two }}" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12">
                     </div>
-
-                    <div class="pb-4">
-                        <label for="alignment" class="text-3xl txt-orange">Alignment</label>
-                        <input type="text" name="alignment" id="alignment" value="{{ $character->alignment }}" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
+                    <div class="px-4 py-2 w-full">
+                        <label for="alignment" class="text-2xl">Alignment</label>
+                        <input type="text" name="alignment" id="alignment" value="{{ $character->alignment }}" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12">
                     </div>
                 </div>
-                <div class="mt-4 flex justify-center">
-                    <button type="submit" class="ml-4 inline-flex items-center px-2 py-2 font-winds bg-cyan border border-transparent rounded-full text-lg">
+
+                <div class="mt-6 flex justify-center">
+                    <button type="submit" class="btn-modif mr-4 inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
                         Sauvegarder
                     </button>
-                    <a href="{{ route('characters.show', $character) }}" class="ml-4 inline-flex items-center px-2 py-2 font-winds bg-orange border border-transparent rounded-full text-lg">
+                    <a href="{{ route('characters.show', $character) }}" class="btn-cancel inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
                         Annuler
                     </a>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
     @if($character && $character->is_created == 1)
