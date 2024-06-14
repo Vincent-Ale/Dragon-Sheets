@@ -39,6 +39,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
+
 /* ###################################################################################################### */
 /* #####                ################################################################################# */
 /* #####       &&       ################################################################################# */
@@ -382,6 +383,58 @@ p{
     font-family: "Vollkorn SC", serif;
 }
 /* ###################################################################################################### */
+
+
+
+
+/* ###################################################################################################### */
+/* ####################################        PERSONNAGE         ####################################### */
+/* ###################################################################################################### */
+
+
+.settings-text{
+    font-family: "Vollkorn SC", serif;
+    color: var(--orange-color);
+    background-color: var(--dark-blue-color);
+    border: 3px solid var(--cyan-color);
+}
+
+.settings-border{
+    color: var(--cyan-color);
+    background-color: var(--blue-color);
+    border: 2px solid var(--cyan-color);
+}
+
+.settings-border2{
+    background-color: var(--blue-color);
+    border: 2px solid var(--cyan-color);
+}
+
+.txt-lore-notepad{
+    font-family: 'Trade Winds', display;
+    color: #1A0000
+}
+
+.txt-button-lore-notepad{
+    font-family: 'Trade Winds', display;
+    color: #BE8252
+}
+
+.bg-lore-notepad{
+    background-color: #1A0000
+}
+
+.btn-note-lore{
+    background-color: var(--dark-blue-color);
+    border: 2px solid var(--cyan-color);
+}
+
+.btn-text-color{
+    font-family: "Vollkorn SC", serif;
+    color: var(--orange-color);
+}
+/* ###################################################################################################### */
+
 
 
 

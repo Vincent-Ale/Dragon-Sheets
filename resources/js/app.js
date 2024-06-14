@@ -65,3 +65,13 @@ document.querySelectorAll('.stat-group').forEach(function(group) {
         CalculSavy(modifierElement, profiboxElement, savingThrowElement, recoveryProfy);
     });
 });
+
+
+window.previewImage = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+        var output = document.getElementById('preview');
+        output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
