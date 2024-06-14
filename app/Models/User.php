@@ -27,6 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'settings_color_theme',
+        'settings_virtual_dices',
+        'settings_musical_theme'
+
     ];
 
     /**

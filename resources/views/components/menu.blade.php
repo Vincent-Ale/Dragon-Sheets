@@ -14,8 +14,8 @@
 
         <div class="lien-menu flex flex-col justify-center items-center text-3xl">
             <a href="{{ route('characters.index') }}" class="block px-4 py-2 mt-3 mb-6">Personnages</a>
-            <a href="#" class="block px-4 py-2 mb-6">Mon Compte</a>
-            <a href="#" class="block px-4 py-2 mb-6">Paramètres</a>
+            <a href="{{ route('profile.show') }}" class="block px-4 py-2 mb-6">Mon Compte</a>
+            <a href="{{ route('settings.index') }}" class="block px-4 py-2 mb-6">Paramètres</a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="block px-4 py-2 mb-6">Déconnexion</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
