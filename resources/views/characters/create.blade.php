@@ -8,78 +8,69 @@
             </div>
         </div>
         
-        <div class="img-container flex flex-col items-center justify-center relative mx-auto mb-2 mt-6">
-            <img x-show="imagePreview" x-bind:src="imagePreview" alt="Image Preview" class="profil-img relative z-10">
-            <img class="profil-cadre absolute top-0 left-0 z-20" src="/images/cadre.png" alt="Cadre d'image de profil">
-        </div>
-
-        <form action="{{ route('characters.store') }}" method="POST" enctype="multipart/form-data" class="p-6">
+        <form action="{{ route('characters.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <label for="image" class="text-3xl txt-orange">Image</label>
+            <div class="mt-4 shadow overflow-hidden sm:rounded-lg">
 
-            <input type="file" name="image" id="image" class="flex items-center w-full p-2 mt-1 mb-6 text-xl border h-12 input-deco"
-                @change="let file = $event.target.files[0];
-
-                if (file) {
-                    let reader = new FileReader();
-                    reader.onload = (e) => imagePreview = e.target.result;
-                    reader.readAsDataURL(file);
-                }"
-            >
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="px-4 py-2">
-                    <label for="name" class="text-3xl txt-orange">Nom</label>
-                    <input type="text" name="name" id="name" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                <!-- Image de profil -->
+                <div class="img-container flex flex-col items-center justify-center relative mx-auto mt-2 mb-2">
+                    <img id="preview" src="" alt="" class="profil-img relative">
+                    <img class="profil-cadre absolute top-0 left-0" src="/images/cadre.png" alt="Cadre stylisé autour de l'image">
                 </div>
+                <!-- Masquez l'input de type file -->
+                <input type="file" name="image" id="image" class="hidden" onchange="previewImage(event)">
+                <!-- Ajoutez un label pour l'input de type file avec une icône -->
+                <label for="image" class="settings-text flex flex-row items-center justify-center mx-12 mt-6 rounded-full">
+                    <img class="h-12 w-12 mr-2" src="/images/icons/upload.png" alt=""> <!-- Remplacez ceci par l'icône de votre choix -->
+                    <p class="cyan-text text-xl">Choisir une image</p>
+                </label>
 
-                <div class="px-4 py-2">
-                    <label for="race" class="text-3xl txt-orange">Race</label>
-                    <input type="text" name="race" id="race" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
-                </div>
-
-                <div class="flex flex-row">
-                    <div class="w-1/2 px-4 py-2">
-                        <label for="level" class="text-3xl txt-orange">Niveau</label>
-                        <input type="number" name="level" id="level" oninput="CalculProfy()" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                <div class="settings-text flex flex-col items-center rounded-lg mx-2 mt-6 pt-2 pb-3">
+                    <div class="px-4 py-2 w-full">
+                        <label for="name" class="text-2xl txt-orange">Nom</label>
+                        <input type="text" name="name" id="name" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12" required>
                     </div>
-                    <div class="w-1/2 px-4 py-2">
-                        <label for="proficiency" class="text-3xl txt-orange">Maîtrise</label>
-                        <input type="number" name="proficiency" id="proficiency" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" readonly>
+                    <div class="px-4 py-2 w-full">
+                        <label for="race" class="text-2xl txt-orange">Race</label>
+                        <input type="text" name="race" id="race" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12" required>
+                    </div>
+                    <div class="flex flex-row w-full">
+                        <div class="w-1/2 px-4 py-2">
+                            <label for="level" class="text-2xl txt-orange">Niveau</label>
+                            <input type="number" name="level" id="level" oninput="CalculProfy()" class="w-full settings-border2 rounded-lg flex flex-row items-center p-2 text-white text-3xl border h-12" required>
+                        </div>
+                        <div class="w-1/2 px-4 py-2">
+                            <label for="proficiency" class="text-2xl txt-orange">Maîtrise</label>
+                            <input type="number" name="proficiency" id="proficiency" class="w-full settings-border2 rounded-lg flex flex-row items-center p-2 text-white text-3xl border h-12" readonly>
+                        </div>
+                    </div>
+                    <div class="px-4 py-2 w-full">
+                        <label for="class" class="text-2xl txt-orange">Classe</label>
+                        <input type="text" name="class" id="class" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12" required>
+                    </div>
+                    <div class="px-4 py-2 w-full">
+                        <label for="subclass_one" class="text-2xl txt-orange">Première Sous-Classe</label>
+                        <input type="text" name="subclass_one" id="subclass_one" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12">
+                    </div>
+                    <div class="px-4 py-2 w-full">
+                        <label for="subclass_two" class="text-2xl txt-orange">Deuxième Sous-Classe</label>
+                        <input type="text" name="subclass_two" id="subclass_two" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12">
+                    </div>
+                    <div class="px-4 py-2 w-full">
+                        <label for="alignment" class="text-2xl txt-orange">Alignement</label>
+                        <input type="text" name="alignment" id="alignment" class="w-full settings-border rounded-lg flex flex-row items-center p-2 text-xl border h-12">
                     </div>
                 </div>
-
-                <div class="px-4 py-2">
-                    <label for="class" class="text-3xl txt-orange">Classe</label>
-                    <input type="text" name="class" id="class" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco" required>
+                <input name="is_created" type="hidden" value="0">
+                <div class="mt-6 flex flex-col justify-center items-center">
+                    <button type="submit" class="btn-modif mr-4 inline-flex items-center text-2xl px-4 py-2 mb-4 border border-transparent rounded-full">
+                        Créer personnage
+                    </button>
+                    <a href="{{ route('characters.index') }}" class="btn-cancel inline-flex items-center text-2xl px-4 py-2 mb-6 border border-transparent rounded-full">
+                        Annuler
+                    </a>
                 </div>
-
-                <div>
-                    <label for="subclass_one" class="text-3xl txt-orange">Première Sous-Classe</label>
-                    <input type="text" name="subclass_one" id="subclass_one" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
-                </div>
-
-                <div>
-                    <label for="subclass_two" class="text-3xl txt-orange">Deuxième Sous-Classe</label>
-                    <input type="text" name="subclass_two" id="subclass_two" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
-                </div>
-
-                <div>
-                    <label for="alignment" class="text-3xl txt-orange">Alignement</label>
-                    <input type="text" name="alignment" id="alignment" class="flex items-center w-full p-2 mt-1 text-xl border h-12 input-deco">
-                </div>
-            </div>
-
-            <input name="is_created" type="hidden" value="0">
-
-            <div class="mt-4 flex justify-center">
-                <button type="submit" class="ml-4 inline-flex items-center px-2 py-2 font-winds bg-cyan border border-transparent rounded-full text-lg">
-                    Créer personnage
-                </button>
-                <a href="{{ route('characters.index') }}" class="ml-4 inline-flex items-center px-2 py-2 font-winds bg-orange border border-transparent rounded-full text-lg">
-                    Annuler
-                </a>
             </div>
         </form>
     </div>
