@@ -1,4 +1,9 @@
 <x-menu />
+
+@if(auth()->user()->settings_virtual_dices == 1)
+<x-virtual-dices />     
+@endif
+
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-3 sm:px-6 lg:px-8">
         <!-- En-tête du personnage -->
@@ -206,4 +211,6 @@
             <a class="bg-blue-char" href="{{ route('skills.index', $character) }}"><img class="icons-nav p-4" src="/images/icons/cyanskill.png" alt="Icône Compétences"></a>
         </nav>
     @endif
+
+    
 </x-app-layout>

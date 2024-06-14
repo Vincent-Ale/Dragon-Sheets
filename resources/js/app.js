@@ -75,3 +75,35 @@ window.previewImage = function(event) {
     }
     reader.readAsDataURL(event.target.files[0]);
 }
+
+window.rollDice = function () {
+    this.result = Math.floor(Math.random() * this.dice) + 1;
+}
+
+
+window.getRandomNumber = function (max) {
+    return Math.floor(Math.random() * max) + 1;
+}
+
+window.clearResults = function (results) {
+    results.splice(0, results.length);
+}
+
+window.rollMultipleDice = function (numberOfDice, dice, results) {
+    clearResults(results);
+    for (let i = 0; i < numberOfDice; i++) {
+        results.push(getRandomNumber(dice));
+    }
+}
+
+document.addEventListener('alpine:init', () => {
+    Alpine.data('virtualDice', () => ({
+        showDice: false,
+        dice: 6,
+        numberOfDice: 1,
+        results: [],
+        rollDice() {
+            rollMultipleDice(this.numberOfDice, this.dice, this.results);
+        }
+    }));
+});
