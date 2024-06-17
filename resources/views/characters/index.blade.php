@@ -1,4 +1,5 @@
 <x-menu />
+
 <x-app-layout>
 
     @if (session('success'))
