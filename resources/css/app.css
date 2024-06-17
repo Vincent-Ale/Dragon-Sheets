@@ -651,10 +651,73 @@ input.input-stat {
 
 
 /* ###################################################################################################### */
+/* ###################################       COMPETENCES       ########################################## */
+/* ###################################################################################################### */
+
+.checkbox {
+    display: none;
+}
+
+.checkbox-icon {
+    cursor: pointer;
+}
+
+.text-font{
+    font-family: "Trade Winds", system-ui;
+}
+
+.bg-dark-blue{
+    background-color: var(--dark-blue-color);
+}
+
+.bg-light-blue{
+    background-color: var(--blue-color);
+}
+
+.border-set-left{
+    border-left: 1px solid var(--cyan-color);
+}
+
+.border-set-right{
+    border-right: 1px solid var(--cyan-color);
+}
+
+.border-set-bottom{
+    border-bottom: 4px solid var(--cyan-color);
+}
+
+.border-set-tb{
+    border-top: 4px solid var(--cyan-color);
+    border-bottom: 4px solid var(--cyan-color);
+}
+
+.border-set-x{
+    border-right: 4px solid var(--cyan-color);
+    border-left: 4px solid var(--cyan-color);
+}
+
+.border-set-star{
+    background-color: var(--dark-blue-color);
+    border: 4px solid var(--cyan-color);
+}
+
+.skill-name{
+    background-color: var(--dark-blue-color);
+    border: 4px solid var(--cyan-color);
+    width: 230px;
+}
+
+.text-color-orange{
+    color: var(--orange-color);
+}
+
+.text-color-cyan{
+    color: var(--cyan-color);
+}
 
 
 
-
+/* ###################################################################################################### */
 
 
 
