@@ -71,9 +71,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(Character::class);
     }
-
-    public function music()
-    {
-        return $this->hasMany(Music::class);
-    }
 }
