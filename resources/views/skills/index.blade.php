@@ -1,7 +1,4 @@
 <x-menu />
-@if(auth()->user()->settings_virtual_dices == 1)
-<x-virtual-dices />     
-@endif
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="bg-gravel w-72 h-16 ml-2.5 flex items-center justify-center rounded-lg">
