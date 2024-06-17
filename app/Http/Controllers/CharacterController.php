@@ -332,8 +332,8 @@ class CharacterController extends Controller
                 $skill->update([
                     'name' => $skillData['name'],
                     'value' => $skillData['value'],
-                    'proficiency' => isset($skillData['proficiency']) ?1:0,
-                    'expertise' => isset($skillData['expertise']) ?1:0,
+                    'proficiency' => $skillData['proficiency'] ? 1 : 0,
+                    'expertise' => $skillData['expertise'] ? 1 : 0,
                 ]);
             }
         }
