@@ -25,6 +25,7 @@
             </div>
             @endforeach
         </div>
+        
 
         <div class="flex justify-center">
             <a href="{{ route('skills.edit', $character) }}" class="btn-modif inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">

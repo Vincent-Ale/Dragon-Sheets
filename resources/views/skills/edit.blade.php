@@ -42,6 +42,7 @@
                     </div>
                 @endforeach
                 
+                
                 <div class="mt-4 flex space-x-2">
                     
                     @if ($character->is_created == true)
