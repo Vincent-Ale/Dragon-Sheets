@@ -75,3 +75,5 @@ window.previewImage = function(event) {
     }
     reader.readAsDataURL(event.target.files[0]);
 }
+
+
