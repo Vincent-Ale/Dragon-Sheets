@@ -1,4 +1,7 @@
 <x-menu />
+@if(auth()->user()->settings_virtual_dices == 1)
+<x-virtual-dices />     
+@endif
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
 
