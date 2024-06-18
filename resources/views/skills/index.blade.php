@@ -1,40 +1,34 @@
 <x-menu />
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Skills for {{ $character->name }}
-        </h2>
-
-        <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg">
-            <div class="px-4 py-5 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">Skills</h3>
-            </div>
-            <div class="border-t border-gray-200">
-                <dl>
-                    @foreach ($character->skills as $skill)
-                        <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">Skill Name</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $skill->name }}</dd>
-                        </div>
-                        <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">Value</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $skill->value }}</dd>
-                        </div>
-                        <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">Proficiency</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $skill->proficiency ? 'Yes' : 'No' }}</dd>
-                        </div>
-                        <div class="{{ $loop->even ? 'bg-gray-50' : 'bg-white' }} px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">Expertise</dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ $skill->expertise ? 'Yes' : 'No' }}</dd>
-                        </div>
-                    @endforeach
-                </dl>
+        <div class="bg-gravel w-72 h-16 ml-2.5 flex items-center justify-center rounded-lg">
+            <div class="bg-blue flex w-[17rem] h-12 rounded-lg text-4xl text-center items-center justify-center pt-2 ">
+                <h1 class="">Compétences</h1>
             </div>
         </div>
 
-        <div class="mt-4 flex space-x-2">
-            <a href="{{ route('skills.edit', $character) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition">
+        <div class="text-font flex flex-col items-start justify-center ml-3 mt-6 shadow overflow-hidden sm:rounded-lg">
+            @foreach ($character->skills as $skill)
+            <div class="flex flex-row items-center justify-center mb-6 ">
+                <div class="flex flex-row items-center justify-center text-2xl">
+                    <dd class="text-color-orange skill-name text-2xl text-center rounded-l-full py-1">{{ $skill->name }}</dd>
+                    <dd class="flex flex-row items-center justify-center text-2xl text-white border-set-tb px-4 bg-light-blue py-1">{{ $skill->value }}</dd>
+                </div>
+                <div class="flex flex-row border-set-star">
+                    <div class="flex flex-col items-center justify-center border-set-right p-1">
+                        <dd class="w-8 h-8">{!! $skill->proficiency ? '<img src="/images/icons/silverstaricon.png" alt="Yes">' : '<img src="/images/icons/silverstaricon2.png" alt="No">' !!}</dd>
+                    </div>
+                    <div class="flex flex-col items-center justify-center border-set-left p-1">
+                        <dd class="w-8 h-8">{!! $skill->expertise ? '<img src="/images/icons/goldstaricon.png" alt="Yes">' : '<img src="/images/icons/goldstaricon2.png" alt="No">' !!}</dd>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        
+
+        <div class="flex justify-center">
+            <a href="{{ route('skills.edit', $character) }}" class="btn-modif inline-flex items-center text-2xl px-4 py-2 border border-transparent rounded-full">
                 Modifier
             </a>
         </div>
