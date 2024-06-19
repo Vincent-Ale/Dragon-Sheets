@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Music;
+
 
 class MusicController extends Controller
 {
@@ -12,9 +14,10 @@ class MusicController extends Controller
      */
     public function index()
     {
-        $musics = Music::all();
+        // Récupérer tous les morceaux de musique depuis la base de données
+        $tracks = Music::all();
 
-        return view('musics.index', compact('musics'));
+        return view('musics.index', compact('tracks'));
     }
 
     /**
@@ -22,46 +25,46 @@ class MusicController extends Controller
      */
     public function create()
     {
-        //
+        return view('musics.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required',
+            'tag' => 'required',
+            'music_file' => 'required|mimes:mp3,mpeg'
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        // Récupérer le fichier et le stocker dans storage/themes
+        $musicFile = $request->file('music_file')->store('public/themes');
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // Générer le chemin relatif à partir du répertoire storage
+        $path = str_replace('public/', 'storage/', $musicFile);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        // Créer une nouvelle entrée dans la base de données
+        Music::create([
+            'name' => $request->name,
+            'tag' => $request->tag,
+            'music_path' => $path,
+            'user_id' => auth()->id() // Assurez-vous que votre modèle Music a une relation correctement configurée pour l'utilisateur
+        ]);
+
+        return redirect()->route('musics.index')->with('success', 'Music added successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($filename)
     {
-        //
+        $file_path = public_path('theme') . '/' . $filename;
+
+        if (file_exists($file_path)) {
+            unlink($file_path);
+            return redirect()->route('musics.index')->with('success', 'Music deleted successfully!');
+        }
+
+        return redirect()->route('musics.index')->with('error', 'Music not found!');
     }
 }

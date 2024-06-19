@@ -149,10 +149,10 @@ Route::get('/', function () {
     Route::get('/musics/create', [MusicController::class,'create'])
     ->name('musics.create');
 
-    Route::post('/musics/store', [MusicController::class,'store'])
+    Route::post('/musics/store', [MusicController::class, 'store'])
     ->name('musics.store');
 
-    Route::delete('/musics/destroy', [MusicController::class,'destroy'])
+    Route::delete('/musics/{filename}', [MusicController::class, 'destroy'])
     ->name('musics.destroy');
 
     //#############################################################################################################
