@@ -1,12 +1,6 @@
 <x-form-section submit="updateProfileInformation">
-    <x-slot name="title">
-        {{ __('Profile Information') }}
-    </x-slot>
-
-    <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
-    </x-slot>
-
+    
+    
     <x-slot name="form">
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -51,17 +45,24 @@
                 <x-input-error for="photo" class="mt-2" />
             </div>
         @endif
-
+        
+        <div class="bg-gravel w-72 h-36 mx-auto mb-6 flex items-center justify-center rounded-2xl">
+            <div class="bg-blue flex w-64 h-28 rounded-2xl text-5xl text-center items-center pt-2 ">
+                <h1>Dragon Sheets</h1>
+            </div>
+        </div>
+        
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Name') }}" />
+            <p class="font-trade-orange mb-6 text-center text-5xl">Mon Compte</p>
+            <x-label class="font-trade-orange text-2xl" for="name" value="{{ __('Name') }}" />
             <x-input id="name" type="text" class="mt-1 block w-full" wire:model="state.name" required autocomplete="name" />
             <x-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="email" value="{{ __('Email') }}" />
+            <x-label class="font-trade-orange text-2xl" for="email" value="{{ __('Email') }}" />
             <x-input id="email" type="email" class="mt-1 block w-full" wire:model="state.email" required autocomplete="username" />
             <x-input-error for="email" class="mt-2" />
 
@@ -89,7 +90,7 @@
         </x-action-message>
 
         <x-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Sauvegarder') }}
         </x-button>
     </x-slot>
 </x-form-section>

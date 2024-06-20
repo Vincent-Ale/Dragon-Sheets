@@ -4,41 +4,41 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Add additional security to your account using two factor authentication.') }}
+        {{ __('Ajoutez une sécurité supplémentaire à votre compte grâce à l\'authentification à deux facteurs.') }}
     </x-slot>
 
     <x-slot name="content">
-        <h3 class="text-lg font-medium text-gray-900">
+        <h3 class="font-trade-orange text-2xl mb-4">
             @if ($this->enabled)
                 @if ($showingConfirmation)
-                    {{ __('Finish enabling two factor authentication.') }}
+                    {{ __('Terminez l\'activation de l\'authentification à deux facteurs.') }}
                 @else
-                    {{ __('You have enabled two factor authentication.') }}
+                    {{ __('Vous avez activé l\'authentification à deux facteurs.') }}
                 @endif
             @else
-                {{ __('You have not enabled two factor authentication.') }}
+                {{ __('Vous n\'avez pas activé l\'authentification à deux facteurs.') }}
             @endif
         </h3>
 
-        <div class="mt-3 max-w-xl text-sm text-gray-600">
+        <div class="font-volk-orange text-lg">
             <p>
-                {{ __('When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.') }}
+                {{ __('Lorsque l\'authentification à deux facteurs est activée, vous serez invité à fournir un jeton sécurisé et aléatoire lors de l\'authentification. Vous pouvez récupérer ce jeton depuis l\'application Google Authenticator de votre téléphone.') }}
             </p>
         </div>
 
         @if ($this->enabled)
             @if ($showingQrCode)
-                <div class="mt-4 max-w-xl text-sm text-gray-600">
+                <div class="mt-4 font-volk-orange text-base">
                     <p class="font-semibold">
                         @if ($showingConfirmation)
-                            {{ __('To finish enabling two factor authentication, scan the following QR code using your phone\'s authenticator application or enter the setup key and provide the generated OTP code.') }}
+                            {{ __('Pour terminer l\'activation de l\'authentification à deux facteurs, scannez le code QR suivant à l\'aide de l\'application d\'authentification de votre téléphone ou entrez la clé de configuration et fournissez le code OTP généré.') }}
                         @else
-                            {{ __('Two factor authentication is now enabled. Scan the following QR code using your phone\'s authenticator application or enter the setup key.') }}
+                            {{ __('L\'authentification à deux facteurs est désormais activée. Scannez le code QR suivant à l\'aide de l\'application d\'authentification de votre téléphone ou saisissez la clé de configuration.') }}
                         @endif
                     </p>
                 </div>
 
-                <div class="mt-4 p-2 inline-block bg-white">
+                <div class="mt-4 p-2 inline-block ">
                     {!! $this->user->twoFactorQrCodeSvg() !!}
                 </div>
 
@@ -56,7 +56,7 @@
                             wire:model="code"
                             wire:keydown.enter="confirmTwoFactorAuthentication" />
 
-                        <x-input-error for="code" class="mt-2" />
+                        <x-input-error for="code" class="mt-2"/>
                     </div>
                 @endif
             @endif
@@ -68,7 +68,7 @@
                     </p>
                 </div>
 
-                <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg">
+                <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm rounded-lg">
                     @foreach (json_decode(decrypt($this->user->two_factor_recovery_codes), true) as $code)
                         <div>{{ $code }}</div>
                     @endforeach
@@ -80,7 +80,7 @@
             @if (! $this->enabled)
                 <x-confirms-password wire:then="enableTwoFactorAuthentication">
                     <x-button type="button" wire:loading.attr="disabled">
-                        {{ __('Enable') }}
+                        {{ __('Activer') }}
                     </x-button>
                 </x-confirms-password>
             @else

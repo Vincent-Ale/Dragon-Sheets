@@ -8,20 +8,20 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-600">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+        <div class="max-w-xl font-volk-orange text-lg">
+            {{ __('Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Avant de supprimer votre compte, veuillez télécharger toutes les données ou informations que vous souhaitez conserver.') }}
         </div>
 
         <div class="mt-5">
             <x-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
-                {{ __('Delete Account') }}
+                {{ __('Supprimer le Compte') }}
             </x-danger-button>
         </div>
 
         <!-- Delete User Confirmation Modal -->
         <x-dialog-modal wire:model.live="confirmingUserDeletion">
             <x-slot name="title">
-                {{ __('Delete Account') }}
+                {{ __('Supprimer le Compte') }}
             </x-slot>
 
             <x-slot name="content">

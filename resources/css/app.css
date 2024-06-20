@@ -146,6 +146,16 @@ p{
     color: var(--orange-color);
 }
 
+.font-volk-cyan{
+    font-family: "Vollkorn SC", serif;
+    color: var(--cyan-color);
+}
+
+.font-volk-orange{
+    font-family: "Vollkorn SC", serif;
+    color: var(--orange-color);
+}
+
 
 
 
