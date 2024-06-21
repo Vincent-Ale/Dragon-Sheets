@@ -5,6 +5,12 @@
 @endif
 
 <x-app-layout>
+    <div class="audio-player hidden">
+        <audio id="audio" class="hidden">
+            <source id="audioSource" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
     <div class="max-w-7xl mx-auto py-3 sm:px-6 lg:px-8">
         <!-- En-tête du personnage -->
         <div class="bg-gravel w-72 h-16 mx-4 flex items-center justify-center rounded-lg">

@@ -1,4 +1,11 @@
 <x-app-layout>
+    <div class="audio-player hidden">
+        <audio id="audio" class="hidden">
+            <source id="audioSource" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <input type="range" id="progressBar" min="0" max="100" hidden>
+    </div>
 
     <div class="mt-4" x-data="{ imagePreview: '' }">
 

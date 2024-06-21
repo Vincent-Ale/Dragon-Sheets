@@ -20,6 +20,13 @@
         </h2>
     </x-slot>
 
+    <div class="audio-player hidden">
+        <audio id="audio" class="hidden">
+            <source id="audioSource" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
     <div class="bg-gravel w-72 h-16 ml-2.5 mt-4 flex items-center justify-center rounded-lg">
         <div class="bg-blue flex w-[17rem] h-12 rounded-lg text-4xl text-center items-center justify-center pt-2 ">
             <h1>Personnages</h1>

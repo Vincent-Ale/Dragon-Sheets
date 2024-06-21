@@ -1,5 +1,11 @@
 <x-menu />
 <x-app-layout>
+    <div class="audio-player hidden">
+        <audio id="audio" class="hidden">
+            <source id="audioSource" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
 
     <div class="bg-gravel w-64 h-20 ml-7 flex items-center justify-center rounded-lg">
