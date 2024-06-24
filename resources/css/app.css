@@ -39,6 +39,10 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+.bg-light-blue{
+    background-color: var(--blue-color);
+}
+
 
 
 /* ###################################################################################################### */
@@ -196,15 +200,35 @@ p{
 /* ######################################  VIRTUAL DICE  ################################################ */
 /* ###################################################################################################### */
 .virtual-dice {
-    width: 300px;
+    width: 320px;
     height: auto;
-    background-color: #f9f9f9;
-    padding: 20px;
     border-radius: 10px;
 }
 
 .btn-dice {
+    background-color: var(--dark-blue-color);
+    border: 3px solid var(--cyan-color);
     cursor: pointer;
+}
+
+.btn-roll{
+    background-color: var(--orange-color);
+}
+
+.btn-roll:active{
+    background-color: var(--orange-color2);
+    transform: scale(1.1);
+}
+
+.shadow-effect {
+    filter: drop-shadow(0 0 10px white);
+}
+
+.dice-content{
+    background-color: var(--dark-blue-color);
+    color: var(--cyan-color);
+    border: 4px solid var(--purple-color);
+
 }
 /* ###################################################################################################### */
 

@@ -36,35 +36,36 @@
          x-transition:leave-start="opacity-100 scale-100"
          x-transition:leave-end="opacity-0 scale-90"
     >
-        <div class="dice-content flex flex-col justify-center items-center text-xl bg-white p-4 shadow-lg rounded-lg">
-            
-            <h1 class="mb-4">Virtual Dice Roller</h1>
-            <label class="mb-2">Choisissez le dé:</label>
-            <div class="mb-4 flex">
-                <template x-for="(option, index) in diceOptions" :key="index">
-                    <div class=""> <!-- Utilisation des classes Bootstrap pour flex -->
-                        <img :src="option.image" :alt="'Dé ' + option.value + '-faces'" class="w-15 h-auto">
-                        <input type="radio" x-model="selectedDice" :value="option.value" class="ml-2">
-                    </div>
-                </template>
+        <div class="dice-content flex flex-col justify-center items-center text-xl shadow-lg rounded-lg">
+            <div x-on:click="showDice = false" class="text-4xl absolute right-4 top-2 text-blue-500 cursor-pointer"> 
+                X
             </div>
-            <div class="mb-4">
-                <label for="numberOfDice" class="block mb-2">Quantité:</label>
-                <input type="number" x-model.number="numberOfDice" id="numberOfDice" class="block px-4 py-2 rounded border">
-            </div>
-            <button @click="rollDice" class="px-4 py-2 bg-blue-500 text-white rounded">Roll</button>
-            <template x-if="results.length > 0">
-                <div class="mt-4">
-                    <h2>Total: <span x-text="totalResult"></span></h2>
+            <h1 class="mb-4 mt-10 text-3xl">Dés Virtuels</h1>
+            <div class="mb-4 flex flex-wrap items-center justify-center">
+            <template x-for="(option, index) in diceOptions" :key="index">
+                <div class="w-1/4 m-2"> <!-- Utilisation des classes Bootstrap pour flex -->
+                    <label class="image-radio">
+                        <img :src="option.image" :alt="'Dé ' + option.value + '-faces'" class="w-20 h-auto" :class="{ 'shadow-effect': selectedDice === option.value }" @click="selectedDice = option.value">
+                        <input type="radio" x-model="selectedDice" :value="option.value" class="hidden">
+                    </label>
                 </div>
             </template>
-            <div x-on:click="showDice = false" class="mt-4 text-blue-500 cursor-pointer">
-                Close
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="flex flex-col items-center mb-4">
+                    <label for="numberOfDice" class="font-volk-cyan block mb-2">Nombre de Dés</label>
+                    <input type="number" x-model.number="numberOfDice" id="numberOfDice" class="bg-light-blue text-center text-3xl w-28 block px-4 py-2 rounded border">
+                </div>
+                <img @click="rollDice" class="btn-roll w-24 h-24 ml-3 p-3 rounded-full" src="/images/icons/rolldices.png" alt="">
+            </div>
+            
+            <div class="mt-4 mb-4">
+                <h2 class="font-volk-orange text-4xl" >Résultat: <span class="font-volk-cyan" x-text="totalResult"></span></h2>
             </div>
         </div>
     </div>
 
-    <div class="btn-dice fixed top-24 right-0 flex flex-col items-center p-1 z-10" x-on:click="showDice = true">
+    <div class="btn-dice fixed top-24 right-0 flex flex-col items-center p-1 z-10 rounded-tl-full rounded-bl-full" x-on:click="showDice = true">
         <img class="dice-logo w-16" src="/images/dice-icon-menu.png" alt="Dice Logo">
     </div>
 </div>
